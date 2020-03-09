@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      /* 
+      一，水平居中
+      方法1 ：行内元素   （父元素）text-align，（子元素）inline-block
+      .parent{text-align: center;}                 
+      .child{display: inline-block;} 
+      总结：
+      优点：兼容性好，支持低版本浏览器
+      缺点：需要同时在父元素和子元素上设置
+      适用场景：子元素数量少（或只有一个），并且需要兼容低版本浏览器时使用，不受float影响
+       */
+      .parent1 {
+        background: red;
+        height: 200px;
+        text-align: center;
+      }
+      .child1 {
+        background: blue;
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+      }
+      /* 
+      一，水平居中
+      方法2：块状元素   使用margin:0 auto来实现
+      .child{width:200px;margin:0 auto;} 
+      优点：兼容性好
+      缺点：需要指定宽度
+      前提：用于子元素上，不受float影响
+       */
+      .parent2 {
+        background: red;
+        height: 200px;
+      }
+      .child2 {
+        background: blue;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+      }
+      /* 
+      一，水平居中
+      方法3：（子元素）display:table;margin:0 auto;
+      .child{display:table;margin:0 auto;} 
+      优点：只需要对自身进行设置 ，子元素宽高不固定的情况可以使用
+      缺点：不兼容IE6和IE7
+      适用场景：子元素数量多，子元素宽高不固定的情况可以使用，不方便修改父元素的属性，对浏览器版本要求相对较低时使用
+       */
+      .parent3 {
+        background: red;
+        height: 200px;
+      }
+      .child3 {
+          /* height: 100px; */
+        color: white;
+        background: blue;
+        display: table;
+        margin: 0 auto;
+      }
+      /* 
+      一，水平居中
+      方法4：使用flex实现方法 （父）flex + justify-content
+      .parent{display:flex;justify-content:center;}
+      优点：只设parent，子元素宽高不固定的情况可以使用
+      缺点：flex兼容性差，而且比较耗资源
+      */
+      .parent4 {
+        background: red;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+      }
+      .child4 {
+        background: blue;
+        width: 100px;
+        height: 100px;
+      }
+      /*
+      一，水平居中
+      方法5：flex+margin
+      .parent{display:flex;}
+      .child{margin:0 auto;} 
+      优点：代码简单，子元素宽高不固定的情况可以使用
+      缺点：污染父元素，flex兼容性问题，如果进行大面积的布局可能会影响效率
+      */
+      .parent5 {
+        background: red;
+        height: 200px;
+        display: flex;
+      }
+      .child5 {
+        background: blue;
+        width: 100px;
+        height: 100px;
+        /* 水平居中 */
+        margin: 0 auto;
+        /* 垂直居中 */
+        /* margin: auto 0; */
+        /* 水平垂直居中 */
+        /* margin: auto; */
+      }
+ 
+      /*
+      二，垂直居中
+      方法1 ：单行文本 设置line-height等于父元素高度
+      .child{ height:20px; line-height:20px} 
+      优点：代码简单
+      缺点：只适合一行文本，多行文本则不可以
+      这是一种很流行的方法, 也适应IE7.
+      */
+      .parent6 {
+        background: red;
+        height: 200px;
+      }
+      .child6 {
+        background: blue;
+        height: 100px;
+        line-height: 100px;
+      }
+      /*
+      二，垂直居中
+      方法2：块级元素 使用vertical-align的时候，由于对齐的基线是用行高的基线作为标记，故需要设置display:table-cell;
+      .parent{display:table-cell;vertical-align:middle;height:200px;}
+      优点：兼容性比较好，换成table可以兼容IE6,7
+      缺点：table-cell不能和float、position:absolute同时设置。（只能在外parent外套一层div.wrap才能设置float） 
+       */
+      .parent7 {
+        background: red;
+        height: 200px;
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .child7 {
+        background: blue;
+        width: 500px;
+        height: 100px;
+      }
+      /* 
+      二，垂直居中
+      方法3：使用flex实现方法 （父）flex + align-items
+      .parent{display:flex;align-items:center;} 
+      优点：只要设置parent，子元素宽高不固定的情况可以使用
+      缺点：flex和align-items的兼容性
+       */
+      .parent8 {
+        background: red;
+        height: 200px;
+        display: flex;
+        align-items: center;
+      }
+      .child8 {
+        background: blue;
+        width: 500px;
+        height: 100px;
+      }
+      /* 
+      三、【终极需求】水平垂直同时居中！
+      方法1：元素高度固定
+      .parent{position:relative;}
+      .child{position:absolute;top:50%;left:50%;width:固定;height:固定;margin-top:-0.5*高度;margin-left:-0.5*宽度;}
+      优点：适用于所有浏览器
+      缺点：需要指定宽高
+       */
+      .parent9 {
+        background: red;
+        height: 200px;
+        position: relative;
+      }
+      .child9 {
+        background: blue;
+        width: 50px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        /* 宽度一半 */
+        margin-left: -25px;
+      }
+      /* 
+      三、【终极需求】水平垂直同时居中！
+      方法2：元素高度固定
+      .parent{position:relative;}
+      .child{position:absolute;width:固定;height:固定;top:0;left:0;right:0;bottom:0;margin:auto}
+      优点：适用于所有浏览器
+      缺点：需要指定宽高
+       */
+      .parent10 {
+        background: red;
+        height: 200px;
+        position: relative;
+      }
+      .child10 {
+        background: blue;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      /* 
+       三、【终极需求】水平垂直同时居中！
+      方法3：使用绝对定位
+      .parent{position:relative;}
+      .child{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);} 
+      优点：基本只设置子元素，不影响其他元素, 子元素宽高不固定的情况可以使用
+      缺点：transform兼容性问题
+       */
+      .parent11 {
+        background: red;
+        height: 200px;
+        position: relative;
+      }
+      .child11 {
+        background: blue;
+        position: absolute;
+        /* width: 100px;
+        height: 100px; */
+        top: 50%;
+        left: 50%;
+        color: white;
+        transform: translate(-50%, -50%);
+      }
+      /* 
+       三、【终极需求】水平垂直同时居中！
+      方法4：利用flex实现
+      .parent{display:flex;justify-content:center;align-items:center;}
+      优点：只要设置parent，子元素宽高不固定的情况可以使用
+      缺点：flex和align-items的兼容性
+       */
+      .parent12 {
+        background: red;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .child12 {
+        background: blue;
+        width: 100px;
+        height: 100px;
+      }
+      /*
+       三、【终极需求】水平垂直同时居中！
+      方法5：（父）text-align + table-cell + vertical-align，（子）inline-block（兼容性方案）
+      .parent{display:table-cell;vertical-align:middle;text-align:center;}
+      .child{display:inline-block;}
+      优点：子元素宽高不固定的情况可以使用
+      缺点：父元素宽高需要指定
+       */
+      .parent13 {
+        background: red;
+        width: 1000px;
+        height: 200px;
+        display:table-cell;
+        vertical-align:middle;
+        text-align:center;
+      }
+      .child13 {
+        color: white;
+        background: blue;
+        /* width: 100px;
+        height: 100px; */
+        display:inline-block;
+      }
+ 
+      .parent {
+        background: red;
+        height: 200px;
+      }
+      .child {
+        color: white;
+        background: blue;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+      0
+    <div class="parent"><div class="child">默认：我是什么都不设置</div></div>
+    <br />
+    1
+    <div class="parent1"><div class="child1"></div></div>
+    <br />
+    2
+    <div class="parent2"><div class="child2"></div></div>
+    <br />
+    3
+    <div class="parent3"><div class="child3">我的宽高不固定</div></div>
+    <br />
+    4
+    <div class="parent4"><div class="child4"></div></div>
+    <br />
+    5
+    <div class="parent5"><div class="child5"></div></div>
+    <br />
+    6
+    <div class="parent6"><p class="child6">单行文本</p></div>
+    <br />
+    7
+    <div class="parent7"><div class="child7"></div></div>
+    <br />
+    8
+    <div class="parent8"><div class="child8"></div></div>
+    <br />
+    9
+    <div class="parent9"><div class="child9"></div></div>
+    <br />
+    10
+    <div class="parent10"><div class="child10"></div></div>
+    <br />
+    11
+    <div class="parent11"><div class="child11">我的宽高不固定</div></div>
+    <br />
+    12
+    <div class="parent12"><div class="child12"></div></div>
+    <br />
+    13
+    <div class="parent13"><div class="child13">我的宽高不固定</div></div>
+    <br />
+  </body>
+</html>
