@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>let</title>
+</head>
+
+<body>
+    <script>
+        // var arr = [];
+        // for (var i = 0; i < 10; i++) {
+        //     arr[i] = function () {
+        //         console.log(i);
+        //     }
+        // }
+
+        // 默认参数位置
+        // arr[5]() //10,a[5]输出f(){console.log(i);},后面加个括号代表执行f()
+        // console.log();
+        // function f(x = 1, y) {
+        //     // return [x, y];
+        //     console.log([x, y]);
+        // }
+        // f(undefined, 1)//[1,1]
+        // f(null, 1) //[null,1]
+        // f(2)//[2,undefined]
+
+        // 作用域**************
+        // var x = 1;
+
+        // function f(x, y = x) {
+        //     var x = 2;
+        //     console.log(y);
+        // }
+
+        // f(3) // 3
+
+        // let x = 1;
+
+        // function f(y = x) {
+        //     let x = 2;
+        //     console.log(y);
+        // }
+
+        // f() // 1
+        // f(3)//3
+
+        // 尾调函数递归
+        // function factorial(n, total = 1) {
+        //     if (n === 1) return total;
+        //     console.log(total);
+        //     return factorial(n - 1, n * total);
+        // }
+
+        // factorial(5) // 120
+        // 数组，复制数组es5
+        // const a1 = [1, 2];
+        // // const a2 = a1.concat();
+        // const a2 = a1 //复制的是指向同一数据的指针
+        // a2[0] = 3; //修改a2会直接改变a1的值
+        // console.log(a1); //[3,2]
+        // console.log(a2); //[3,2]
+
+        const a1 = [1, 2];
+        // concat()连接两个或者多个函数，返回的是一个新数组
+        const a2 = a1.concat();
+        a2[0] = 3; //已经生成了心得数组，所以修改a2不会会直接改变a1的值
+        console.log(a1); //[1,2]
+        console.log(a2); //[3,2]
+    </script>
+</body>
+
+</html>
