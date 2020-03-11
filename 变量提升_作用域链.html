@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 变量提升+局部变量+全局变量 */
+        // var a = "Hello";
+
+        // function person() {
+        //     var a; //声明局部变量，如果注释掉这边，第一个log为输出全局变量"hello"再往后就是赋值了
+        //     console.log(a); //undefined
+        //     a = "World";
+        //     console.log(a); //World
+        // }
+        // person();
+        // console.log(a); //Hello
+        // // 先看整个脚本文件的声明部分，全局作用域有个变量a，局部作用域也有个变量a，而且都有var声明，说明他们是完全两个不同的变量，此时函数内部不用管外面的全局变量，此时变量a只是声明而没有赋值，所以输出为 undefined；
+        // // 接着还是局部作用域里面，给a进行了赋值，此时输出时为world，且仍是局部变量；
+        // // 函数外部的输出时，因为局部作用域已经结束，则又恢复到全局变量中，所以此时输出的是全局变量啊，值为hello。
+        
+        // /* 作用域链 */
+        var cat = '有鱼';cd
+        function Person() {
+            var name = '张三';
+
+            function Student() {
+                var age = 18;
+                console.log(name); //张三
+                console.log(cat); //有鱼 
+            }
+            Student();
+            console.log(age); //Uncaught ReferenceError: age is not defined
+        }
+        Person();
+        //     ① Student函数内部属于最内层作用域， 找不到name， 向上一层作用域Person函数内部找， 找到了输出‘ 张三’；
+        //     ② 在Student内部输出cat时找不到， 向上一层作用域Person函数找， 还找不到继续向上一层找， 即全局作用域， 找到了输出‘ 有鱼’；
+        //     ③ 在Person函数内部输出age时找不到， 向上一层作用域找， 即全局作用域， 还是找不到输出‘ age is not defined’；
+        // 
+    </script>
+</body>
+
+</html>
