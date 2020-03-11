@@ -39,9 +39,9 @@
             console.log(age); //Uncaught ReferenceError: age is not defined
         }
         Person();
-        //     ① Student函数内部属于最内层作用域， 找不到name， 向上一层作用域Person函数内部找， 找到了输出‘ 张三’；
-        //     ② 在Student内部输出cat时找不到， 向上一层作用域Person函数找， 还找不到继续向上一层找， 即全局作用域， 找到了输出‘ 有鱼’；
-        //     ③ 在Person函数内部输出age时找不到， 向上一层作用域找， 即全局作用域， 还是找不到输出‘ age is not defined’；
+        //      1、Student函数内部属于最内层作用域， 找不到name， 向上一层作用域Person函数内部找， 找到了输出‘ 张三’；
+        //     2、在Student内部输出cat时找不到， 向上一层作用域Person函数找， 还找不到继续向上一层找， 即全局作用域， 找到了输出‘ 有鱼’；
+        //     3、 在Person函数内部输出age时找不到， 向上一层作用域找， 即全局作用域， 还是找不到输出‘ age is not defined’；
         // 
     </script>
 </body>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>闭包问题</title>
 </head>
 
 <body>
@@ -23,15 +23,76 @@
         // var e = a();
         // console.log(e()); //6
 
-        /* section2 */
-        for (var i = 0; i < 2; i++) {
-            setTimeout(function () {
-                console.log(i);
-            }, 0)
-        } 
-        // 返回两次2
+        /* section2简单的变量污染问题 */
+        // for (var i = 0; i < 2; i++) {
+        //     setTimeout(function () {
+        //         console.log(i);
+        //     }, 0)
+        // } 
+        // // 返回两次2
 
+        /* section3解决全局变量污染情况 */
+        // function person() {
+        //     var age = 18;
+        //     // console.log(age);
+        //     function cat() {
+        //         age++;
+        //         console.log(age);
+        //     }
+        //     cat() //立即执行函数+单括号调用
+        //     // console.log(age);
+        //     // return cat;
+        // }
+        // person()
+        // // person()(); // 19  return cat时使用
+        // // person()(); // 19
 
+        /* 立即调用函数 */
+        (function person() {
+            var age = 18;
+            // console.log(age);
+            function cat() {
+                age++;
+                console.log(age);
+            }
+            cat() //立即执行函数+单括号调用
+            cat()
+            console.log(age);
+            // return cat;
+        }())
+        person()//立即执行函数时调用不到
+
+        // function a() {
+        //     var n = 0;
+
+        //     function inc() {
+        //         n++;
+        //         console.log(n);
+        //     }
+        //     inc();
+        //     inc();
+        // }
+        // a(); //1,2
+
+        // var per = person();
+        // per();//19
+        // per();//20
+        // per();//21
+
+        /* 实现自增，但是不影响全局变量 */
+        // var a = 10;
+        // function Add3() {
+        //     var a = 10;
+        //     return function () {
+        //         a++;
+        //         return a;
+        //     };
+        // };
+        // var cc = Add3();
+        // console.log(cc());
+        // console.log(cc());
+        // console.log(cc());
+        // console.log(a);
     </script>
 </body>
 
