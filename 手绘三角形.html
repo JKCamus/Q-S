@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>手绘三角形</title>
+  <style>
+    *body {
+      margin: 0;
+      padding: 0;
+    }
+/* 一种三角形 */
+    #box {
+      width: 0;
+      height: 0;
+      border: 100px solid;
+      border-top-color: red;
+      ;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      margin: 0 auto;
+    }
+/* 带阴影 */
+    /* span {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+    } */
+
+    i {
+      border-width: 10px;
+      border-style: solid dashed dashed;
+      border-color: transparent transparent black;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    b {
+      border-width: 10px;
+      border-style: solid dashed dashed;
+      border-color: transparent transparent green;
+      position: absolute;
+      left: 0;
+      top: 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div id="box"></div> -->
+  <span>
+    <i></i>
+    <b></b>
+  </span>
+</body>
+
+</html>
