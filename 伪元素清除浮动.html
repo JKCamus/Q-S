@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>伪元素清除浮动</title>
+
+  <style>
+    #container {
+      background-color: red;
+    }
+    .content {
+      float: left;
+      background-color: yellowgreen;
+      width: 50px;
+      height: 50px;
+      margin: 0 10px;
+    }
+    #container:after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="content"></div>
+    <div class="content"></div>
+    <div class="content"></div>
+  </div>
+</body>
+
+</html>
