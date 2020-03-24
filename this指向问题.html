@@ -59,22 +59,31 @@
         // console.log(cat1.name); // 有鱼
 
         // apply bind call修改this指向
-        var name = '有鱼';
+        // var name = '有鱼';
 
-        function eat() {
-            console.log(this.name);
-        }
-        var cat = {
-            name: '年年',
-        }
-        var dog = {
-            name: '高飞',
-        }
-        // apply方法和call方法相当于改变了显式的修改了prototype原型
-        eat.call(cat); // 年年
-        eat.call(dog); // 高飞
+        // function eat() {
+        //     console.log(this.name);
+        // }
+        // var cat = {
+        //     name: '年年',
+        // }
+        // var dog = {
+        //     name: '高飞',
+        // }
+        // // apply方法和call方法相当于改变了显式的修改了prototype原型
+        // eat.call(cat); // 年年
+        // eat.call(dog); // 高飞
 
-        eat.apply(cat)
+        // eat.apply(cat)
+        var obj = {
+            message: 'My name is: '
+        }
+
+        function getName(firstName, lastName) {
+            console.log(this.message + firstName + ' ' + lastName)
+        }
+
+        getName.call(obj, 'Dot', 'Dolby')//my name is ...
     </script>
 
 </body>

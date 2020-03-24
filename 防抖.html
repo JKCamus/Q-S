@@ -16,21 +16,28 @@
       var m_debounce = document.getElementById('debounce')
       m_debounce.addEventListener('click', debounce(needDebounce, 1000))
     }
-
+    // 2.防抖函数,接收（需要防抖的函数，延时）
     function debounce(func, delay) {
+      // 3.创建一个标记来存放定时器的返回值
       let timer = null
+      // 返回一个函数
       return function (...args) {
+        // 4.每次事件发生时，判断定时器是否有值，有值清除
         if (timer) clearTimeout(timer)
+        // 5.创建一个新的setTimeout
+        // 保证在点击按钮后在设定的事件内不会执行func函数
         timer = setTimeout(() => {
-          func.apply(this, args)
+          func(...args) //es6
+          // func.apply(this,args)//es5
         }, delay)
       }
     }
-
+    // 需要防抖处理的事件
     function needDebounce() {
       console.log('防抖成功');
-
     }
+
+    
   </script>
 </body>
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>节流</title>
+</head>
+
+<body>
+  <button id="throttle">点我节流！</button>
+  <script>
+    window.onload = function () {
+      var m_throttle = document.getElementById('throttle')
+      m_throttle.addEventListener('click', throttle(needThrottle))
+    }
+
+    function throttle(func, delay = 1000) {
+      // 1设定标志位为true
+      let flag = true
+      // 返回一个函数
+      return (...args) => {
+        // 当标志位为false时直接返回
+        if (!flag) return
+        flag = false
+        setTimeout(() => {
+          func.apply(this, args)
+          flag = true
+        }, delay)
+      }
+    }
+
+    function needThrottle() {
+      console.log('节流成功');
+
+    }
+  </script>
+</body>
+
+</html>
