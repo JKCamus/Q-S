@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .f {
+      display: flex;
+
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .f>div {
+      flex: 1;
+      background-color: red;
+      border: solid black 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    /* 考短路或，第一个为true，返回第一个，不计算第二个，第一个为false，直接返回第二个，即string。
+     */
+    // var a =439>0||typeof(4399+'')
+    // console.log(a);
+
+    /* 变量污染，常考 */
+    var foo = {
+        n: 1
+      }
+      (function (foo) {
+        console.log(foo.n);
+        foo.n = 3
+        var foo = {
+          n: 2
+        }
+        console.log(foo.n);
+      })(foo);
+    console.log(foo.n);
+
+  </script>
+  <div class="f">
+    <div class="1">1</div>
+    <div class="2">2</div>
+    <div class="3">3</div>
+  </div>
+</body>
+
+</html>
