@@ -14,5 +14,8 @@
 // var array =[1,2,22,3,4,5,-1,996]
 // var max = Math.max.apply(null,array)//直接返回最大值99
 // console.log(max);
-let [head,...tail]=[1,2,3,4]
-console.log(tail);
+// let [head,...tail]=[1,2,3,4]
+// console.log(tail);
+console.log(v1);
+var v1=100
+
