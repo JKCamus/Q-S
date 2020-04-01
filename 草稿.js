@@ -16,6 +16,59 @@
 // console.log(max);
 // let [head,...tail]=[1,2,3,4]
 // console.log(tail);
-console.log(v1);
-var v1=100
+// 
+// 日常手写
+function dounce(func,delay){
+  let timer=null
+  return function (...args){
+    if(timer)clearInterval(timer)
+    timer=setTimeout(()=>{
+      func(...args)
+    },delay)
+  }
+}
+function throttle(func,delay){
+  let flag=true
+  return function(...args){
+    if(!flag)return
+    flag=false
+    setTimeout(()=>{
+      func(...args)
+      flag=true
+    },delay)
+  }
+}
+// axios 
+export function request(config){
+  const instance =axios.create({
+  baseURL:'',
+  timeout:''
+  })
 
+  instance.interceptors.request.use(config=>{
+    return config
+  },err=>{
+
+  })
+
+  instance.interceptors.response.use(res=>{
+    return res
+  },err=>{
+    console.log(err);
+    
+  })
+  return instance(config)
+}
+// bubble
+function bubble(arr){
+  let length=arr.length
+  for(let i=0;i<length-1;i++){
+    for(let j=0;j<length-i-1;j++){
+      if(arr[j]>arr[j+1]){
+        [arr[j],arr[j+1]]=[arr[j+1],a[j]]
+      }
+    }
+  }
+}
+// 深拷贝
+let b=JSON.parse(JSON.stringify(a))
