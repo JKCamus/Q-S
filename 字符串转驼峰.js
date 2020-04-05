@@ -6,6 +6,7 @@
 // }).join('')
 // console.log(b);
 // 较好的方式
+// 转数组，再遍历，为第二个首字母大写
 function change(str){
   let arr=str.split('-')
   for(let i=1;i<arr.length;i++){
@@ -15,8 +16,8 @@ function change(str){
 }
 str='hello-world'
 str1='best-future'
-console.log(change(str));
-console.log(change(str1));
+console.log(change(str));//helloWorld
+console.log(change(str1));//bestFuture
 
 
 

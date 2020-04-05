@@ -75,11 +75,15 @@
 
 // str.split(' ')
 // console.log(str.split(' '));
-str.trim()
-console.log(str);//不改变原值
-console.log(str.trim());//去除了左右空格
-console.log(str.replace(/\s*/g,""));//去除所有空格
-log
+// str.trim()
+// console.log(str);//不改变原值
+// console.log(str.trim());//去除了左右空格
+// console.log(str.replace(/\s*/g,""));//去除所有空格
+// log
+
+console.log(typeof Symbol);
+
+
 
 
 
