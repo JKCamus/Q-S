@@ -1,13 +1,13 @@
-// // 丐版
-// const add = function add(x) {
-// 	return function (y) {
-// 		return x + y
-// 	}
-// }
-// const add1 = add(1)
-// add1(2) // 3
-// add1(20) //21=20+1
-// // 优化版本
+// 丐版
+const add = function add(x) {
+	return function (y) {
+		return x + y
+	}
+}
+const add1 = add(1)
+add1(2) // 3
+add1(20) //21=20+1
+// 优化版本
 function curring(){
   var args=Array.prototype.slice.call(arguments)
   var fn =function(){
