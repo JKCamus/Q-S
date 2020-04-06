@@ -80,9 +80,20 @@
 // console.log(str.trim());//去除了左右空格
 // console.log(str.replace(/\s*/g,""));//去除所有空格
 // log
-
-console.log(typeof Symbol);
-
+// // 典型闭包
+// function person(){
+//   var name='camus'
+//   function group(){
+//     console.log(name);
+//   }
+// return group
+// }
+// 字符串去重
+let str='qweqweqweqweqsasd'
+// new Set(str)//将字符串转为Set数据结构
+// [...new Set(str)]将Set数据结构解构赋值（转为数组）
+res=[...new Set(str)].join('')//通过join转为字符串
+console.log(res);//qwesad
 
 
 
