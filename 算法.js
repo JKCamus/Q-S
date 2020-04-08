@@ -15,3 +15,4 @@ console.log(checkPalindrome('我爱我'));
 let arr=[1,13,24,11,11,14,1,2]
 
 console.log([...new Set(arr)]);
+

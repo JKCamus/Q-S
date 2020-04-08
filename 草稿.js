@@ -89,13 +89,104 @@
 // return group
 // }
 // 字符串去重
-let str='qweqweqweqweqsasd'
-// new Set(str)//将字符串转为Set数据结构
-// [...new Set(str)]将Set数据结构解构赋值（转为数组）
-res=[...new Set(str)].join('')//通过join转为字符串
-console.log(res);//qwesad
+// let str='qweqweqweqweqsasd'
+// // new Set(str)//将字符串转为Set数据结构
+// // [...new Set(str)]将Set数据结构解构赋值（转为数组）
+// res=[...new Set(str)].join('')//通过join转为字符串
+// console.log(res);//qwesad
 
 
 
+function num(str){
+  var arr=str.split(' ')
+  return arr[arr.length-1].length
+}
+console.log(num('hello world'));
+
+// 初始值
+var number = 100
+// 猜数次数
+var time = 0
+// 每次猜的数字
+var temp = null
+// 标记上一次是猜大了还是猜小了
+var stamp = null
+// 存放猜过的数字
+var array = []
+function guess (target, min = 1, max = 100) {
+  // 判断给的数字是否在范围内
+  if (target > 100 || target < 1) {
+    console.log('要1到100的数字哦！')
+    return
+  }
+  temp = Math.floor((max + min) / 2)
+  temp = tempChange(temp)
+  // 将猜过的数字放进一个数组里
+  array.push(temp)
+  number = Math.floor(number / 2)
+  if (number === 0) number = 1
+  if (target === temp) {
+    console.log('第' + ++time + '次，我猜是' + temp + '%c bingo！', 'color: green')
+    return
+  } else if (target >= min + number) {
+    console.log('第' + ++time + '次，我猜是' + temp + '%c 小了！', 'color: red')
+    // 猜小了，标记为true
+    stamp = true
+    guess(target, min + number, max)
+  } else if (target <= max - number) {
+    console.log('第' + ++time + '次，我猜是' + temp + '%c 大了！', 'color: red')
+    // 猜大了，标记为false
+    stamp = false
+    guess(target, min, max - number)
+  }
+}
+
+// 判断这个数字是否已经猜过
+function tempChange (temp) {
+  if (array.indexOf(temp) !== -1) {
+    if (stamp) {
+      temp++
+    } else {
+      temp--
+    }
+  }
+  return temp
+}
+guess(9)
+
+// eventloop理解
+async function async2(){
+  console.log('async2')
+}
+console.log('script start')
+setTimeout(function(){
+  console.log('setTimeout') 
+},0)  
+new Promise(function(resolve){
+  console.log('promise1')
+  resolve();
+}).then(function(){
+  console.log('promise2')
+}).then(function() {
+  console.log('promise3')
+}).then(function() {
+  console.log('promise4')
+}).then(function() {
+  console.log('promise5')
+}).then(function() {
+  console.log('promise6')
+}).then(function() {
+  console.log('promise7')
+}).then(function() {
+  console.log('promise8')
+})
+async1();
+async1();
 
 
+console.log('script end')
+async function async1(){
+  console.log('async1 start')
+  await async2()
+  console.log('async1 end')
+}

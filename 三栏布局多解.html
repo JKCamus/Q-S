@@ -84,7 +84,7 @@
       height: 200px;
       background-color: yellowgreen;
     } */
-/* tablecell */
+/* tableCell */
 
   </style>
 </head>
@@ -110,7 +110,67 @@
     <div class="center">2</div>
     <div class="right">3</div>
   </div> -->
-  
+  <!-- table布局 -->
+  <!-- <section class="layout table">
+    <style>
+      .layout.table .left-center-right {
+        width: 100%;
+        display: table;
+        height: 100px;
+      }
+      .layout.table .left-center-right > div {
+        display: table-cell;
+      }
+      .layout.table .left {
+        width: 300px;
+        background: red;
+      }
+      .layout.table .center {
+        background: yellow;
+      }
+      .layout.table .right {
+        width: 300px;
+        background: blue;
+      }
+    </style>
+    <article class="left-center-right">
+      <div class="left"></div>
+      <div class="center">
+        <h1>表格布局解决方案</h1>
+        1. 这是三栏布局中间部分 2. 这是三栏布局中间部分
+      </div>
+      <div class="right"></div>
+    </article>
+  </section> -->
+
+<!-- grid布局 -->
+<section class="layout">
+  <style>
+    .left-center-right{
+      display: grid;
+      width: 100%;
+      /* 设置行高 */
+      grid-template-rows: 100px;
+      /* 设置列宽3行，格子的宽度 */
+      grid-template-columns: 300px auto 300px;
+    }
+    .left{
+      width: 300px;
+      background-color:yellowgreen;
+    }
+    .center{
+      background-color: lightpink;
+    }
+    .right{
+      background-color:lightyellow;
+    }
+  </style>
+  <article class="left-center-right">
+    <div class="left">1</div>
+    <div class="center">2</div>
+    <div class="right">3</div>
+  </article>
+</section>
 
 </body>
 

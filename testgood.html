@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HuaWei</title>
+</head>
+
+<body>
+  <script>
+    // var line = readline();
+    // 12-20
+    // 存在的区间的交集的个数
+    // 获取时间段，将时间长度转化为具体的整数数组，对比数组内成员是否相同。相同即人数加一
+    var line = '12 15 3'
+    while (line) {
+      var lines = line.split(" ");
+      var a = parseInt(lines[0]);
+      var b = parseInt(lines[1]);
+      var n = parseInt(lines[2])
+      // print(a+b);
+      let arr = []
+      for (let i = a; i < b; i++) {
+        // console.log(i);
+        // let str = i + ''
+        // obj.push(i)
+        arr.push(i)
+      }
+      console.log(arr);
+
+      // Array.from(lines)
+      // console.log(Array.from(lines));
+
+
+
+
+      console.log('[' + a + ',' + b + ')' + ':' + n);
+      break
+    }
+
+
+
+
+
+
+    // print('['+12+','+13+')'+':'+2)
+    // console.log('['+12+','+13+')'+':'+2);
+  </script>
+</body>
+
+</html>
