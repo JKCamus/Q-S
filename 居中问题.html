@@ -178,7 +178,7 @@
 
     /* 
       三、【终极需求】水平垂直同时居中！
-      方法1：元素高度固定
+     !方法1：元素高度固定
       .parent{position:relative;}
       .child{position:absolute;top:50%;left:50%;width:固定;height:固定;margin-top:-0.5*高度;margin-left:-0.5*宽度;}
       优点：适用于所有浏览器
@@ -299,6 +299,24 @@
       display: inline-block;
     }
 
+    /* 
+    6.gird布局
+     */
+    .parent14 {
+      display: grid;
+      height: 100px;
+      background: red;
+
+    }
+
+    .child14 {
+      align-self: center;
+      justify-self: center;
+      background: blue;
+    }
+
+
+
     .parent {
       background: red;
       height: 200px;
@@ -382,6 +400,10 @@
   13
   <div class="parent13">
     <div class="child13">我的宽高不固定</div>
+  </div>
+  14
+  <div class="parent14">
+    <div class="child14">我的宽高不固定</div>
   </div>
   <br />
 </body>

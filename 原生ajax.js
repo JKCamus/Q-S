@@ -30,3 +30,4 @@ function ajax(options) {
 
   method === 'GET' ? xhr.send() : xhr.send(data)
 }
+

@@ -12,8 +12,6 @@ function bubble(array) {
       if (array[j] > array[j + 1]) {
         // ES6两数值交换
         [array[j], array[j + 1]] = [array[j + 1], array[j]]
-        // swap(array,j,j+1)
-
       }
     }
   }

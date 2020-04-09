@@ -33,3 +33,11 @@
 // console.log(res2);//11
 
 
+//!字符串转数组
+var a = 'camus' 
+Array.from(a);//["c", "a", "m", "u", "s"],a="camus"
+[].slice.call(a);//["c", "a", "m", "u", "s"],a="camus"
+a.split('')//["c", "a", "m", "u", "s"],a="camus"
+Array.prototype.map.call(a,function(x){return x})
+//["c", "a", "m", "u", "s"],a="camus"
+
