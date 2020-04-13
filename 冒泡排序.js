@@ -32,9 +32,9 @@ function exBubble(arr,func){
     }
   }
 }
+exBubble(arr1,(a,b)=>a-b)//升序
 let arr1=[1, 2, 3, -1, 6, 8, 9, 0, -112]
 let arr2=[1, 2, 3, -1, 6, 8, 9, 0, -112]
-exBubble(arr1,(a,b)=>a-b)//升序
 exBubble(arr2,(a,b)=>b-a)//降序
 console.log(arr1);
 console.log(arr2);

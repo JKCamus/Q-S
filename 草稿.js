@@ -206,3 +206,6 @@
 // 进阶冒泡
 
 //webpack打包流程
+// console.log(globalThis);
+// 判断环境
+// this === window ? console.log('browser') : console.log('node')
