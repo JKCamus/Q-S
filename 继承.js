@@ -54,7 +54,6 @@ console.log(son1 instanceof Father);
 //!class继承
 // 父类，构造函数属性里属性+方法属性
 class Parent {
-  
   constructor(value) {
     this.val = value
   }
