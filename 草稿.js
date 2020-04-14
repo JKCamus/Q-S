@@ -209,3 +209,26 @@
 // console.log(globalThis);
 // 判断环境
 // this === window ? console.log('browser') : console.log('node')
+//遍历对象
+let [obj, log] = [
+  {
+    a: 1, 
+    b: 2, 
+    c: 3
+  },
+  console.log
+  
+]
+Object.keys(obj).forEach(key => {
+  log(key, obj[key]);
+});
+/* 
+a 1
+b 2
+c 3
+ */
+console.log(Object.getOwnPropertyNames(obj));//[ 'a', 'b', 'c' ]
+console.log(Reflect.ownKeys(obj));//[ 'a', 'b', 'c' ]
+console.log(Object.keys(obj));//[ 'a', 'b', 'c' ]
+console.log(Object.values(obj));//[ 1, 2, 3 ]
+
