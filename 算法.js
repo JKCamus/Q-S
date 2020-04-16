@@ -16,8 +16,10 @@
 
 // console.log([...new Set(arr)]);
 
-/* 字符串翻转 */
-let string="Hello World!"
+/* 
+!字符串翻转 
+*/
+/* let string="Hello World!"
 let reverseString=string.split('').reverse().join('')
 
 console.log(reverseString);
@@ -26,5 +28,33 @@ let reverseString2=string.split('').reduce((res,char)=>{
   return char+res
 }
 )
-console.log(reverseString2);
+console.log(reverseString2); */
 
+/* 
+字符统计
+*/
+let str = 'sdfsdfasfa';
+
+let info = str.split('').reduce((p, k) => (p[k]++ || (p[k] = 1), p), {});
+//? array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+console.log(Array.isArray([1, 1, 2]));
+console.log(info); //{ a: 3, b: 2, c: 2, d: 1 }
+console.log(Object.keys(info)); //[ 'a', 'b', 'c', 'd' ]
+console.log(Object.values(info)); //[ 3, 2, 2, 1 ]
+let arr = Object.values(info)
+// let arr=[2,3,3,4,5,65,9]
+var max = Math.max(...arr)
+// let max1=Math.max.apply({},arr)
+// var indexOfMax=str.indexOf('c')//2
+// var objMax=info.indexOf(max)//
+// *不支持对象，支持数组，字符串
+//*indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+var indexOfMax = arr.indexOf(max) //2
+console.log(max);
+console.log(indexOfMax);
+//*reduce万岁
+var indexOfMax1 = 0
+var max1 = arr.reduce((count, value, index) => {
+  return value > count ? (indexOfMax1 = index, value) : count, 0
+})
+console.log(indexOfMax);
