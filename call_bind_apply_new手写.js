@@ -52,9 +52,9 @@ var new1=function(func){
   var ob=Object.create(func.prototype)//创建对象
   var k=func.call(ob)//改变this指向，把结果赋值给K
   if (k&&typeof k==='object'){
-
     return k//是返回k
   }else{
     return ob//不是返回构造函数的执行结果
   }
 }
+

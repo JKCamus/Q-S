@@ -13,14 +13,22 @@
 // 统计字数
 let str = 'sdfsdfasfa';
 
-// let info = str.split('').reduce((p, k) => (p[k]++ || (p[k] = 1), p), {});
-//? array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
-let info = str.split('').reduce((p, k) => {
-  // console.log(k);
-  // console.log(p[k]);
-  return (p[k]++ || (p[k] = 1), p)}, {});
-console.log(Object.values(info));
-// console.log();
+// // let info = str.split('').reduce((p, k) => (p[k]++ || (p[k] = 1), p), {});
+// //? array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+// let info = str.split('').reduce((p, k) => {
+//   // console.log(k);
+//   // console.log(p[k]);
+//   return (p[k]++ || (p[k] = 1), p)}, {});
+// console.log(Object.values(info));
+// // console.log();
+var i = 0;
+while( i < 40 ){
+if( i < 30 )
+continue;
+Document.write(
+'#########');
+i++;
+}
 
   </script>
 </body>
