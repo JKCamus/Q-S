@@ -16,7 +16,7 @@
 //     },2000)
 //   })
 // }
-// 链式调用
+//! 链式调用
 // const p1 =new Promise((resolve)=>{
 //   console.log('start');
 //   resolve()
@@ -50,9 +50,9 @@ let p2=new Promise((resolve,reject)=>{
 // }).then(p1).then(p2)
 
 // // race
-// Promise.race([p1,p2]).then((res)=>{
-//   console.log(res);
-// })
+Promise.race([p1,p2]).then((res)=>{
+  console.log(res);
+})
 // finally就是不管有没有错误都会进行有结果
 /* 
 start

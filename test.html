@@ -24,15 +24,32 @@
 //     return lastStr.length
 // }
 // console.log(strLength(str))
-var b = 3;
-(function(){
-b = 5;
-console.log(b);//b=5
-var b = 2;
-console.log(window.b);//b=3
-console.log(b);//2
-})();
-console.log(b);//3
+// var b = 3;
+// (function(){
+// b = 5;
+// console.log(b);//b=5
+// var b = 2;
+// console.log(window.b);//b=3
+// console.log(b);//2
+// })();
+// console.log(b);//3
+// var a=1;
+// (()=>{
+//   console.log(a);
+//   const a=2
+// })()
+window.name='ByteDance'
+function A(){
+  this.name=123
+}
+A.prototype.getA=function(){
+  console.log(this);
+  return this.name+1
+}
+let a=new A()
+let funcA=a.getA
+funcA()
+
 
 
   </script>

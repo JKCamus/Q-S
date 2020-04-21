@@ -33,7 +33,7 @@ console.log(reverseString2); */
 /* 
 !字符统计
 */
-/* let str = '9876673';
+let str = '9876673';
 
 let info = str.split('').reverse().reduce((p, k) => (p[k]++ || (p[k] = 1), p), {});
 //? array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
@@ -62,7 +62,7 @@ var indexOfMax1 = 0
 var max1 = arr.reduce((count, value, index) => {
   return value > count ? (indexOfMax1 = index, value) : count, 0
 })
-console.log(indexOfMax); */
+console.log(indexOfMax);
 /* 
 !下落高度计算
  */
@@ -81,29 +81,41 @@ let  arr=str.split(' ')
 console.log(arr);
  */
 
+// var str = "12312"
+// var str1 = ""
+// for (var i = str.length - 1; i >= 0; i--) {
+//   if (str1.indexOf(str[i]) == -1) {
+//     str1 += str[i]
+//   }
+// }
+// console.log(str1);
 var str = "12312"
 var str1 = ""
-for (var i = str.length - 1; i >= 0; i--) {
+for (var i = 0; i<str.length-1; i++) {
   if (str1.indexOf(str[i]) == -1) {
     str1 += str[i]
   }
 }
 console.log(str1);
 
-while (n = parseInt(readline())) {
-  fun(n)
-}
+var str
 
-function fun(num) {
-  let res = '';
-  for (let i = 2; i < Math.sqrt(num); i++) {
-    while (num % i === 0) {
-      res += i + ' ';
-      num = num / i;
-    }
-  }
-  if (num > 1) {
-    res += num + ' ';
-  }
-  console.log(res);
-}
+
+
+// while (n = parseInt(readline())) {
+//   fun(n)
+// }
+
+// function fun(num) {
+//   let res = '';
+//   for (let i = 2; i < Math.sqrt(num); i++) {
+//     while (num % i === 0) {
+//       res += i + ' ';
+//       num = num / i;
+//     }
+//   }
+//   if (num > 1) {
+//     res += num + ' ';
+//   }
+//   console.log(res);
+// }
