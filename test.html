@@ -10,48 +10,77 @@
 
 <body>
   <script>
-//     function num(str) {
-//       var arr = str.split(' ')
-//       return arr[arr.length - 1].length
-//     }
-//     console.log(num('hello world'));
+    //     function num(str) {
+    //       var arr = str.split(' ')
+    //       return arr[arr.length - 1].length
+    //     }
+    //     console.log(num('hello world'));
 
 
-//     var str = readline();
-// function strLength(string){
-//     let arr  = string.split(" ")
-//     let lastStr  = arr[arr.length-1]
-//     return lastStr.length
-// }
-// console.log(strLength(str))
-// var b = 3;
-// (function(){
-// b = 5;
-// console.log(b);//b=5
-// var b = 2;
-// console.log(window.b);//b=3
-// console.log(b);//2
-// })();
-// console.log(b);//3
-// var a=1;
-// (()=>{
-//   console.log(a);
-//   const a=2
-// })()
-window.name='ByteDance'
-function A(){
-  this.name=123
-}
-A.prototype.getA=function(){
-  console.log(this);
-  return this.name+1
-}
-let a=new A()
-let funcA=a.getA
-funcA()
-
-
-
+    //     var str = readline();
+    // function strLength(string){
+    //     let arr  = string.split(" ")
+    //     let lastStr  = arr[arr.length-1]
+    //     return lastStr.length
+    // }
+    // console.log(strLength(str))
+    // var b = 3;
+    // (function(){
+    // b = 5;
+    // console.log(b);//b=5
+    // var b = 2;
+    // console.log(window.b);//b=3
+    // console.log(b);//2
+    // })();
+    // console.log(b);//3
+    // var a=1;
+    // (()=>{
+    //   console.log(a);
+    //   const a=2
+    // })()
+    // window.name='ByteDance'
+    // function A(){
+    //   this.name=123
+    // }
+    // A.prototype.getA=function(){
+    //   console.log(this);
+    //   return this.name+1
+    // }
+    // let a=new A()
+    // let funcA=a.getA
+    // funcA()
+    /*最长回文  */
+    const longestPalindrome = function (s) {
+      if (s.length == 1) {
+        return s
+      }
+      let str = '#' + s.split('').join('#') + '#'
+      let rl = []
+      let mx = 0
+      let pos = 0
+      let ml = 0
+      for (let i = 0; i < str.length; i++) {
+        if (i < mx) {
+          rl[i] = Math.min(rl[2 * pos - i], mx - i)
+        } else {
+          rl[i] = 1
+        }
+        while (i - rl[i] > 0 && i + rl[i] < str.length && str[i - rl[i]] == str[i + rl[i]]) {
+          rl[i]++
+        }
+        if (rl[i] + i - 1 > mx) {
+          mx = rl[i] + i - 1
+          pos = i
+        }
+        if (ml < rl[i]) {
+          ml = rl[i]
+          sub = str.substring(i - rl[i] + 1, i + rl[i])
+        }
+      }
+      return sub.split('#').join('').trim()
+    }
+    console.log(longestPalindrome('aaaaaabbbbbaaaa'));
+    
   </script>
 </body>
 

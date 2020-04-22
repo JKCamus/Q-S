@@ -13,9 +13,14 @@ let a ={
     first:'icecream'
   }
 } 
-let b=JSON.parse(JSON.stringify(a))
+let b={
+  ...a
+}
+
+// let b=JSON.parse(JSON.stringify(a))
 a.like.first = 'apple'
-console.log(b.like.first);//icecream
+console.log(b);
+console.log(a.like.first);//icecream
 
 
 
