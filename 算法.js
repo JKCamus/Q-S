@@ -44,7 +44,10 @@ console.log(Object.keys(info)); //[ 'a', 'b', 'c', 'd' ]
 console.log(Object.values(info)); //[ 3, 2, 2, 1 ]
 console.log(Number(Object.keys(info).join('')));
 
+/* 
 
+
+*/
 
 let arr = Object.values(info)
 // let arr=[2,3,3,4,5,65,9]
@@ -89,16 +92,6 @@ console.log(arr);
 //   }
 // }
 // console.log(str1);
-var str = "12312"
-var str1 = ""
-for (var i = 0; i<str.length-1; i++) {
-  if (str1.indexOf(str[i]) == -1) {
-    str1 += str[i]
-  }
-}
-console.log(str1);
-
-var str
 
 
 

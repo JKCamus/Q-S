@@ -51,7 +51,6 @@ var sum = (function () {
     var args = Array.prototype.slice.call(arguments);
     list = list.concat(args);
     // console.log(list);
-    console.log(add);
     
     return add;
   }
@@ -73,3 +72,19 @@ console.log(sum(2, 3, 4).toString());
 console.log(sum(2, 3, 4).toString());
 console.log(sum(2)(3)(4).toString());
 console.log(sum(2)(3)(4).toString());
+
+var sum=(function(){
+  var list =[]
+  var add=function(){
+    var args=Array.prototype.slice(arguments)
+    list=list.concat(args)
+    return
+  }
+  add.toString=function(){
+    var sum =list.reduce((pre,next)=>{
+      return pre +next
+    })
+  }
+  list.length=0
+  return sum
+})

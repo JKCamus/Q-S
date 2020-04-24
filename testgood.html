@@ -50,6 +50,20 @@
         }
       }
     }
+var xhr=new XMLHttpRequest()
+xhr.open('get',url,true)
+xhr.send()
+xhr.onreadystatechange=function(){
+  if(readyState==4){
+    if(xhr.status==200&&xhr.status<300||xhr.status==304){
+      success(xhr.responseText)
+    }else{
+      fall&&fail(xhr.status)
+    }
+  }
+}
+
+
     /* 防抖*/
     function debounce(func, delay) {
       let timer = null

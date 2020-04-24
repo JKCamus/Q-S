@@ -20,7 +20,7 @@ let b={
 // let b=JSON.parse(JSON.stringify(a))
 a.like.first = 'apple'
 console.log(b);
-console.log(a.like.first);//icecream
+console.log(a.like.first);//apple
 
 
 
