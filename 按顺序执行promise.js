@@ -43,7 +43,7 @@ let p2=new Promise((resolve,reject)=>{
 // Promise.all([p1,p2]).then((result)=>{
 //   console.log(result);
 // })
-// // 链式
+// // 链式j
 // const p3 =new Promise((resolve)=>{
 //   console.log('start');
 //   resolve()
