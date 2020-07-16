@@ -181,15 +181,124 @@ const variable = [{
   }
 ]
 
-let arr=variable.map(item=>item.name)
+// let arr=variable.map(item=>item.name)
 
-let res = Object.entries(model).filter((item)=>!variable.map(item=>item.name).includes(item[0]))
+// let res = Object.entries(model).filter((item)=>!variable.map(item=>item.name).includes(item[0]))
 // .map(([valueType, text]) => {
-
 // console.log("1",valueType);
 // console.log("2",text);
-
-
 // })
 
-console.log(res);
+let res = Object.entries(model).filter(([name,value])=>name!=="update_by")
+
+// console.log(res);
+// let res={}
+// for(let [item,value] in model){
+//   console.log(item);
+//   if(item!=="update_time"){
+
+//     return res={
+//   [item]:value
+//     }
+//   }
+// }
+// console.log(res);
+// let k={}
+//  for(let [name,value] of res){
+//   // console.log(name);
+//   // console.log(value);
+//    k={
+//   ...k,
+//   [name]:value
+//   }
+// }
+// console.log("k",k);
+
+// const more="name"
+//   const params = (more) => {
+//     var json = new Function('return ' + more)()
+//     return json
+//   }
+//   console.log(typeOf (more))//true,变量已生成，但未赋值。
+
+
+// let arr=variable.map(item=>item.name)
+// let res={}
+// for (let [name, value] of Object.entries(model)) {
+//   res= {...res,[name]:name}
+// }
+//   console.log("res",res);
+// 需要加上双引号。
+
+let arr = JSON.parse('[{"tableName":"dashboard_portal","fields":["description","project_id"]},{"tableName":"dashboard","fields":["dashboard_portal_id","index"]},{"tableName":"davinci_statistic_duration","fields":["email","org_id","project_id","user_id"]}]')
+
+// let reg = [].map(res=>res.fields).flatmap(x=>x)
+// 求交集
+// 合并全部数组
+// 数组比对交集，比对上的加上前缀
+// 合并比对后的数组
+
+
+
+let ob = []
+let cop = []
+for (let item of arr) {
+  for (let field of item.fields) {
+    // console.log("tableName", item.tableName);
+    ob.push({
+      [item.tableName]: field
+    })
+    cop.push(field)
+  }
+}
+
+var newarr = [];
+for (var j = 0; j < cop.length; j++) {
+  for (var i = j + 1; i < cop.length; i++) {
+    if (cop[j] == cop[i]) {
+      newarr.push(cop[i]);
+
+    }
+  }
+}
+console.log("newarr",newarr);
+console.log("arr",arr);
+let aj = ob.filter(item => {
+  // console.log("value", ...Object.values(item));
+  return newarr.includes(...Object.values(item))
+})
+// console.log("newaajrr",aj);
+
+let Difference = ob.filter(item => !aj.includes(item))
+let result = aj.map(item => {
+  return Object.keys(item) +"."+ Object.values(item)
+})
+let same = Difference.map(item => Object.values(item).toString())
+let ok = [...result, ...same]
+console.log("ok?",result);
+console.log("same?", same);
+// console.log("ok?",ok);
+
+// console.log("aj", aj);
+console.log("ok", ok);
+console.log("ob", ob);
+console.log("cop", cop);
+console.log("newarr", newarr);
+console.log("Difference", Difference);
+
+
+// private tagOption = Object.entries(this.model)
+// .filter(
+//   (item) => !this.variable.map((item) => item.name).includes(item[0])
+// )
+// .map(([variableType, text]) => {
+//   console.log('vari', this.variable)
+//   console.log('variableType', variableType)
+//   // debugger
+//   return (
+//     <Option key={variableType} value={variableType}>
+//       {variableType}
+//     </Option>
+//   )
+// })
+

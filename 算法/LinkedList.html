@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function LinkedList() {
+        function Node(element) {
+          this.element = element;
+          this.next = null;
+        }
+        this.length = 0;
+        this.header = null;
+        LinkedList.prototype.append = function (element) {
+          let newNode = new Node(element);
+          if (this.header === null) {
+            this.header = newNode;
+          } else {
+            let current = this.header;
+            while (current.next) {
+              current = current.next;
+            }
+            current.next = newNode;
+          }
+          this.length += 1;
+        };
+        LinkedList.prototype.toString = function () {
+          // 1.定义两个变量
+          var current = this.head;
+          var listString = "";
+
+          // 2.循环获取链表中所有的元素
+          while (current) {
+            // listString += "," + current.element
+            listString += current.element + (current.next ? "->" : "");
+            current = current.next;
+          }
+
+          
+          // 3.返回最终结果
+          return listString.slice(1);
+        };
+        
+
+
+
+
+
+      }
+      let list = new LinkedList();
+      list.append(15);
+      list.append(10);
+      list.append(20);
+      list.append(20);
+      list.append(20);
+      console.log(list);
+    </script>
+  </body>
+</html>
