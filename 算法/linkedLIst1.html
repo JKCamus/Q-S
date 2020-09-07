@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function LinkedList() {
+        function Node(data) {
+          this.data = data;
+          this.next = null;
+        }
+        this.length = 0;
+        this.header = null;
+        LinkedList.prototype.append = function (data) {
+          let newNode = new Node(data);
+          if (this.length === 0) {
+            this.header = newNode;
+          } else {
+            let current = this.header;
+            while (current.next) {
+              current = current.next;
+            }
+            current.next = newNode;
+          }
+          this.length += 1;
+        };
+        LinkedList.prototype.toString = function () {
+          let current = this.header;
+          let listString=''
+          while (current) {
+            listString += current.data + " ";
+            // 防止死循环
+            current = current.next;
+          }
+          return listString;
+        };
+      }
+      let list = new LinkedList();
+      list.append("abe");
+      list.append("a1be");
+      list.append("a222be");
+      list.append("ab33e");
+      alert(list);
+    </script>
+  </body>
+</html>
