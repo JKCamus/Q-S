@@ -17,8 +17,8 @@
         }
         this.length = 0;
         this.header = null;
-      
-          /* ------------append方法--------------- */
+
+        /* ------------append方法--------------- */
         LinkedList.prototype.append = function (data) {
           // 通过内部类生成新节点
           let newNode = new Node(data);
@@ -29,7 +29,7 @@
             // 不是第一个节点
             // 将头部指针指向一个新的变量current，
             // 借助current指针通过循环将指针指向最后一个节点
-            // 
+            //
             let current = this.header;
             while (current.next) {
               current = current.next;
@@ -47,6 +47,29 @@
             current = current.next;
           }
           return listString;
+        };
+        LinkedList.prototype.insert = function () {
+          // 1.position的越界判断
+          if (position < 0 || position > this.length) return false;
+          // 2根据data创建newNode
+          let newNode = new newNode(data);
+          // 情况一
+          if (position == 0) {
+            newNode.next = this.header;
+            this.header = newNode;
+          } else {
+            let index = 0;
+            let current = this.header;
+            let previous = null;
+            while (index++ < position) {
+              previous = current;
+              current = current.next;
+            }
+            newNode.next = current;
+            previous.next = newNode;
+          }
+          this.length += 1;
+          return true;
         };
       }
       let list = new LinkedList();
