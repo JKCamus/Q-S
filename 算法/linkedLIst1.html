@@ -8,17 +8,28 @@
   <body>
     <script>
       function LinkedList() {
+        //! 生成内部类，节点
+        // 节点由data和next指针构成，新生成的next指针指向null
+        // 并且生成长度为0，header指针指向null
         function Node(data) {
           this.data = data;
           this.next = null;
         }
         this.length = 0;
         this.header = null;
+      
+          /* ------------append方法--------------- */
         LinkedList.prototype.append = function (data) {
+          // 通过内部类生成新节点
           let newNode = new Node(data);
+          // 判断是否是第一个节点，是就把header指针指向新节点
           if (this.length === 0) {
             this.header = newNode;
           } else {
+            // 不是第一个节点
+            // 将头部指针指向一个新的变量current，
+            // 借助current指针通过循环将指针指向最后一个节点
+            // 
             let current = this.header;
             while (current.next) {
               current = current.next;
@@ -29,7 +40,7 @@
         };
         LinkedList.prototype.toString = function () {
           let current = this.header;
-          let listString=''
+          let listString = "";
           while (current) {
             listString += current.data + " ";
             // 防止死循环
