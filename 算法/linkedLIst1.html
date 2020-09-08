@@ -105,6 +105,15 @@
           let index = this.indexOf(data);
           return this.removeAt(index);
         };
+        LinkedList.prototype.isEmpty = function () {
+          return this.length == 0;
+        };
+        LinkedList.prototype.size = function () {
+          return this.length;
+        };
+        LinkedList.prototype.getFirst = function () {
+          return this.header.data;
+        };
       }
       let list = new LinkedList();
       list.append("abe");
@@ -115,12 +124,15 @@
       list.insert(0, 100);
       list.insert(4, 200);
       list.insert(2, 300);
-      alert(list); // 100,15,300,10,20,200
+      // alert(list); // 100,15,300,10,20,200
       // console.log(list.indexOf("ab33e"), list.indexOf(300), list.indexOf(30));
-
       list.indexOf(300);
       list.indexOf(30);
-      list.remove(100)
+      list.remove(100);
+      // 8.测试其他方法
+      alert(list.isEmpty()); // false
+      alert(list.size()); // 2
+      alert(list.getFirst()); // 10
       // list.removeAt(3);
       // list.removeAt(1);
       alert(list); // 100,15,300,10,20,200
