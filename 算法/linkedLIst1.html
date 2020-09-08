@@ -89,6 +89,7 @@
           this.length -= 1;
           return current.data;
         };
+        /* 根据数据判断数据所在位置 */
         LinkedList.prototype.indexOf = function (data) {
           let current = this.header;
           let index = 0;
@@ -101,16 +102,20 @@
           }
           return -1;
         };
+        /* 根据数据删除 */
         LinkedList.prototype.remove = function (data) {
           let index = this.indexOf(data);
           return this.removeAt(index);
         };
+        /* 链表是否为空 */
         LinkedList.prototype.isEmpty = function () {
           return this.length == 0;
         };
+        /* 链表的数据个数 */
         LinkedList.prototype.size = function () {
           return this.length;
         };
+        /* 获取第一个元素 */
         LinkedList.prototype.getFirst = function () {
           return this.header.data;
         };
