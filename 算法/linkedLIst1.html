@@ -89,6 +89,22 @@
           this.length -= 1;
           return current.data;
         };
+        LinkedList.prototype.indexOf = function (data) {
+          let current = this.header;
+          let index = 0;
+          while (current) {
+            if (current.data == data) {
+              return index;
+            }
+            index += 1;
+            current = current.next;
+          }
+          return -1;
+        };
+        LinkedList.prototype.remove = function (data) {
+          let index = this.indexOf(data);
+          return this.removeAt(index);
+        };
       }
       let list = new LinkedList();
       list.append("abe");
@@ -100,9 +116,13 @@
       list.insert(4, 200);
       list.insert(2, 300);
       alert(list); // 100,15,300,10,20,200
+      // console.log(list.indexOf("ab33e"), list.indexOf(300), list.indexOf(30));
 
-      list.removeAt(3);
-      list.removeAt(1);
+      list.indexOf(300);
+      list.indexOf(30);
+      list.remove(100)
+      // list.removeAt(3);
+      // list.removeAt(1);
       alert(list); // 100,15,300,10,20,200
     </script>
   </body>
