@@ -48,18 +48,18 @@
           }
           return listString;
         };
-        LinkedList.prototype.insert = function () {
+        LinkedList.prototype.insert = function (position, data) {
           // 1.position的越界判断
           if (position < 0 || position > this.length) return false;
           // 2根据data创建newNode
-          let newNode = new newNode(data);
+          let newNode = new Node(data);
           // 情况一
-          if (position == 0) {
+          let current = this.header;
+          let index = 0;
+          if (position === 0) {
             newNode.next = this.header;
             this.header = newNode;
           } else {
-            let index = 0;
-            let current = this.header;
             let previous = null;
             while (index++ < position) {
               previous = current;
@@ -71,13 +71,39 @@
           this.length += 1;
           return true;
         };
+        LinkedList.prototype.removeAt = function (position) {
+          if (position < -1 || position >= this.length) return null;
+          let current = this.header;
+          let previous = null;
+          let index = 0;
+          /* 判断是否是第一项，只要让header指向下一个，节点，第一个节点就会被回收，（没有被引用） */
+          if (position == 0) {
+            this.header = current.next;
+          } else {
+            while (index++ < position) {
+              previous = current;
+              current = current.next;
+            }
+            previous.next = current.next;
+          }
+          this.length -= 1;
+          return current.data;
+        };
       }
       let list = new LinkedList();
       list.append("abe");
       list.append("a1be");
       list.append("a222be");
       list.append("ab33e");
-      alert(list);
+      // 4.测试insert方法
+      list.insert(0, 100);
+      list.insert(4, 200);
+      list.insert(2, 300);
+      alert(list); // 100,15,300,10,20,200
+
+      list.removeAt(3);
+      list.removeAt(1);
+      alert(list); // 100,15,300,10,20,200
     </script>
   </body>
 </html>
