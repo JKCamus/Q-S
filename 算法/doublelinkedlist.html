@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function DoubleLinkedList() {
+        function node(data) {
+          this.data = data;
+          this.next = null;
+          this.pre = null;
+        }
+        /* */
+        this.header = null;
+        this.trail = null;
+        this.length = 0;
+        DoubleLinkedList.prototype.append = function (data) {
+          let newNode = new Node(data);
+          if (this.header === null) {
+            this.header = newNode;
+            this.trail = newNode;
+          } else {
+            this.trail.next = newNode;
+            newNode.pre = this.trail;
+            this.trail = newNode;
+          }
+          this.length += 1;
+        };
+
+
+
+
+        
+      }
+    </script>
+  </body>
+</html>
