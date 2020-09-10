@@ -8,33 +8,147 @@
   <body>
     <script>
       function DoubleLinkedList() {
-        function node(data) {
+        function Node(data) {
           this.data = data;
           this.next = null;
           this.pre = null;
         }
         /* */
         this.header = null;
-        this.trail = null;
+        this.tail = null;
         this.length = 0;
         DoubleLinkedList.prototype.append = function (data) {
           let newNode = new Node(data);
           if (this.header === null) {
             this.header = newNode;
-            this.trail = newNode;
+            this.tail = newNode;
           } else {
-            this.trail.next = newNode;
-            newNode.pre = this.trail;
-            this.trail = newNode;
+            this.tail.next = newNode;
+            newNode.pre = this.tail;
+            this.tail = newNode;
           }
           this.length += 1;
         };
+        DoubleLinkedList.prototype.insert = function (position, data) {
+          if (position < 0 || position > this.length) return false;
+          let newNode = new Node(data);
+          if (position === 0) {
+            if (this.header == null) {
+              this.header = newNode;
+              this.tail = newNode;
+            } else {
+              this.header.pre = newNode;
+              newNode.next = this.header;
+              this.header = newNode;
+            }
+          } else if (position === this.length) {
+            this.tail.next = newNode;
+            newNode.pre = this.tail;
+            this.tail = newNode;
+          } else {
+            let index = 0;
+            let current = this.header;
+            let previous = null;
+            while (index++ < position) {
+              previous = current;
+              current = current.next;
+            }
 
+            newNode.next = current;
+            newNode.pre = previous;
+            current.pre = newNode;
+            previous.next = newNode;
+          }
+          this.length += 1;
+          return true;
+        };
+        DoubleLinkedList.prototype.removeAt = function (position) {
+          if (position < 0 || position >= this.length) return null;
+          /* 返回数据要用，所以提前 */
+          let current = this.header;
+          if (this.length === 1) {
+            this.header = null;
+            this.tail = null;
+          } else {
+            if (position === 0) {
+              this.header.next.pre = null;
+              this.header = this.header.next;
+            } else if (position === this.length - 1) {
+              // 最后一个节点
+              current=this.tail
+              this.tail.pre.next = null;
+              this.tail = this.tail.pre;
+            } else {
+              let index = 0;
+              /* 这里无法返回数据 */
+          // let current = this.header;
 
+              while (index++ < position) {
+                current = current.next;
+              }
+              current.pre.next = current.next;
+              current.next.pre = current.pre;
+            }
+          }
+          this.length -= 1;
+          return current.data;
+        };
+        DoubleLinkedList.prototype.indexOf=function(data){
+          let current =this.header
+          let index=0
+          while(current){
+            if(current.data===data){
+              return index
+            }
+            index+=1
+            current=current.next
+          }
+          
+        }
 
-
-        
+        DoubleLinkedList.prototype.forwardString = function () {
+          let current = this.header;
+          let forwardStr = "";
+          while (current) {
+            forwardStr += current.data + " ";
+            current = current.next;
+          }
+          return forwardStr;
+        };
+        DoubleLinkedList.prototype.reverseString = function () {
+          let current = this.tail;
+          let reverseStr = "";
+          while (current) {
+            reverseStr += current.data + " ";
+            current = current.pre;
+          }
+          return reverseStr;
+        };
+        DoubleLinkedList.prototype.toString = function () {
+          return this.forwardString();
+        };
       }
+      // 1.创建双向链表对象
+      var list = new DoubleLinkedList();
+
+      // 2.追加元素
+      list.append("abc");
+      list.append("cba");
+      list.append("nba");
+      list.append("mba");
+      list.insert(1, 100);
+      list.insert(4, 400);
+
+      // 3.获取所有的遍历结果
+
+      alert(list.forwardString()); // abc,cba,nba,mba
+      alert(list.reverseString()); // mba,nba,cba,abc
+      alert(list.indexOf("abc"))
+      alert(list.indexOf("nba"))
+      alert(list.indexOf("2122"))
+      // alert(list.removeAt(1))
+      // alert(list.removeAt(0))
+      alert(list); // abc,cba,nba,mba
     </script>
   </body>
 </html>
