@@ -75,13 +75,13 @@
               this.header = this.header.next;
             } else if (position === this.length - 1) {
               // 最后一个节点
-              current=this.tail
+              current = this.tail;
               this.tail.pre.next = null;
               this.tail = this.tail.pre;
             } else {
               let index = 0;
               /* 这里无法返回数据 */
-          // let current = this.header;
+              // let current = this.header;
 
               while (index++ < position) {
                 current = current.next;
@@ -93,18 +93,21 @@
           this.length -= 1;
           return current.data;
         };
-        DoubleLinkedList.prototype.indexOf=function(data){
-          let current =this.header
-          let index=0
-          while(current){
-            if(current.data===data){
-              return index
+        DoubleLinkedList.prototype.indexOf = function (data) {
+          let current = this.header;
+          let index = 0;
+          while (current) {
+            if (current.data === data) {
+              return index;
             }
-            index+=1
-            current=current.next
+            index += 1;
+            current = current.next;
           }
-          
-        }
+        };
+        DoubleLinkedList.prototype.remove = function (data) {
+          let index = this.indexOf(data);
+          return this.removeAt(index);
+        };
 
         DoubleLinkedList.prototype.forwardString = function () {
           let current = this.header;
@@ -143,9 +146,9 @@
 
       alert(list.forwardString()); // abc,cba,nba,mba
       alert(list.reverseString()); // mba,nba,cba,abc
-      alert(list.indexOf("abc"))
-      alert(list.indexOf("nba"))
-      alert(list.indexOf("2122"))
+      alert(list.indexOf("abc"));
+      alert(list.indexOf("nba"));
+      alert(list.indexOf("2122"));
       // alert(list.removeAt(1))
       // alert(list.removeAt(0))
       alert(list); // abc,cba,nba,mba

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function HashTable() {
+      HashTable.prototype.hashFunc=function(str,size){
+let hashCode=0
+for(let i=0;i<str.length;i++){
+  hashCode=37*hashCode+str.charCodeAt(i)
+}
+let index=hashCode%size
+return index
+      }
+      HashTable.prototype.put=function(){
+        
+      }
+      
+    }
+  </script>
+</body>
+</html>
