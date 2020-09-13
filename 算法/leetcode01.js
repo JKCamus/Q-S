@@ -33,51 +33,70 @@ console.log("rrrr", twoSum(nums, target)); */
 // };
 // console.log('rrrr', twoSum(nums,target))
 
-/* leetCode 02 addTwoNumbers*/
-// let num = 1222;
-// let red = `${1222}`.split("").map(Number);
-// let aj = new ListNode(null);
-class ListNode {
-  constructor(val) {
-    this.val = val;
-    this.next = undefined;
-  }
-}
-const getListFromArray = (a) => {
-    let dummy = new ListNode()
+//! /*!leetCode 02 addTwoNumbers*/
+// // let num = 1222;
+// // let red = `${1222}`.split("").map(Number);
+// // let aj = new ListNode(null);
+// class ListNode {
+//   constructor(val) {
+//     this.val = val;
+//     this.next = undefined;
+//   }
+// }
+// const getListFromArray = (a) => {
+//     let dummy = new ListNode()
 
-    let pre = dummy;
-    a.forEach(x => pre = pre.next = new ListNode(x));
-    return dummy.next;
-}
-var addTwoNumbers = function (l1, l2) {
-  let dummy = new ListNode();
-  let current = dummy;
-  let carry = 0;
-  while (l1 !== null || l2 !== null) {
-    let sum = 0;
-    if (l1 !== null) {
-      sum += l1.val;
-      l1 = l1.next;
+//     let pre = dummy;
+//     a.forEach(x => pre = pre.next = new ListNode(x));
+//     return dummy.next;
+// }
+// var addTwoNumbers = function (l1, l2) {
+//   let dummy = new ListNode();
+//   let current = dummy;
+//   let carry = 0;
+//   while (l1 !== null || l2 !== null) {
+//     let sum = 0;
+//     if (l1 !== null) {
+//       sum += l1.val;
+//       l1 = l1.next;
+//     }
+//     if (l2 !== null) {
+//       sum += l2.val;
+//       l2 = l2.next;
+//     }
+//     sum += carry;
+//     /* 将新值塞生成新节点，并贴到原来的节点上 ，求余得到该位的值*/
+//     current.next = new ListNode(sum % 10);
+//     /* 通用方法，获得进位数 */
+//     carry = Math.floor(sum / 10);
+//     current = current.next;
+//   }
+//   if (carry > 0) {
+//     current.next = new ListNode(carry);
+//   }
+//   return dummy.next;
+// };
+
+// let l1 = [2, 4, 3];
+// let l2 = [5, 6, 4];
+// // console.log("2222", addTwoNumbers(getListFromArray(l1), getListFromArray(l2)))
+// console.log('22', getListFromArray(l1).val)
+let s = "abcabcbb";
+
+var lengthOfLongestSubstring = function (s) {
+  let aye = [];
+  let max = 0;
+  for (let i = 0; i < s.length; i++) {
+    let index = aye.indexOf(s[i]);
+    if (index !== -1) {
+      aye.splice(0, index + 1);
     }
-    if (l2 !== null) {
-      sum += l2.val;
-      l2 = l2.next;
-    }
-    sum += carry;
-    /* 将新值塞生成新节点，并贴到原来的节点上 ，求余得到该位的值*/
-    current.next = new ListNode(sum % 10);
-    /* 通用方法，获得进位数 */
-    carry = Math.floor(sum / 10);
-    current = current.next;
+    aye.push(s.charAt(i));
+    console.log('aaa', aye)
+    max = Math.max(aye.length, max);
   }
-  if (carry > 0) {
-    current.next = new ListNode(carry);
-  }
-  return dummy.next;
+  return max;
 };
 
-let l1 = [2, 4, 3];
-let l2 = [5, 6, 4];
-// console.log("2222", addTwoNumbers(getListFromArray(l1), getListFromArray(l2)))
-console.log('22', getListFromArray(l1).val)
+let res = lengthOfLongestSubstring(s);
+console.log("res", res);
