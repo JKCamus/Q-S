@@ -104,39 +104,55 @@ console.log("rrrr", twoSum(nums, target)); */
 /*  */
 
 //!leetCode 05
-let s = "babad";
-var longestPalindrome = function (s) {
-  /* 长度小于2直接返回 */
-  if (s.length < 2) {
-    return s;
+// let s = "babad";
+// var longestPalindrome = function (s) {
+//   /* 长度小于2直接返回 */
+//   if (s.length < 2) {
+//     return s;
+//   }
+//   /* 设置设置标记点&&和记录最长的回文长度 */
+//   let start = 0;
+//   /* ab 最长回文长度不是0，而是1，所以最长回文长度为1 ，并且当字符串长度小于1的情况时，
+//   前面是直接返回的，所以不会出错*/
+//   let maxLength = 1;
+//   /* 创建一个扩散函数，判断左边的字符串是否等于右边的字符串*/
+//   function expandAroundCenter(left, right) {
+//     /* 边界判断 */
+//     while (left >= 0 && right < s.length && s[left] === s[right]) {
+//       /* [1,2,3]数组的长度为其下标值，left=0 right=2 长度就是2-0+1*/
+//       if (right - left + 1 > maxLength) {
+//         /* 更新标志位及长度 */
+//         maxLength = right - left + 1;
+//         start = left;
+//       }
+//       left -= 1;
+//       right += 1;
+//     }
+//   }
+//   for (let i = 0; i < s.length; i++) {
+//     /* 循环两遍 */
+//     expandAroundCenter(i - 1, i + 1);
+//     /* 避免特殊情况，即，回文中心bb类的情况，例如babbac的 */
+//     expandAroundCenter(i, i + 1);
+//   }
+//   return s.substring(start, start + maxLength);
+// };
+// let res = longestPalindrome(s);
+// console.log("res", res);
+/*//! leetCode04 */
+// let nums1 = [1,2];
+// let nums2 = [3,4];
+let nums1 = [3];
+let nums2 = [-2, -1];
+let a = [nums1, ...nums2];
+var findMedianSortedArrays = function (nums1, nums2) {
+  let b = [...nums1, ...nums2];
+  let a = b.sort((a, b) => a - b);
+  if (a.length % 2 === 0) {
+    return (a[a.length / 2 - 1] + a[a.length / 2]) / 2;
+  } else if (a.length % 2 === 1) {
+    return a[Math.ceil(a.length / 2) - 1];
   }
-  /* 设置设置标记点&&和记录最长的回文长度 */
-  let start = 0;
-  /* ab 最长回文长度不是0，而是1，所以最长回文长度为1 ，并且当字符串长度小于1的情况时，
-  前面是直接返回的，所以不会出错*/
-  let maxLength = 1;
-  /* 创建一个扩散函数，判断左边的字符串是否等于右边的字符串*/
-  function expandAroundCenter(left, right) {
-    /* 边界判断 */
-    while (left >= 0 && right < s.length && s[left] === s[right]) {
-      /* [1,2,3]数组的长度为其下标值，left=0 right=2 长度就是2-0+1*/
-      if (right - left + 1 > maxLength) {
-        /* 更新标志位及长度 */
-        maxLength = right - left + 1;
-        start = left;
-      }
-      left -= 1;
-      right += 1;
-    }
-  }
-  for (let i = 0; i < s.length; i++) {
-    /* 循环两遍 */
-    expandAroundCenter(i - 1, i + 1);
-    /* 避免特殊情况，即，回文中心bb类的情况，例如babbac的 */
-    expandAroundCenter(i, i + 1);
-  }
-  return s.substring(start, start + maxLength);
 };
-let res = longestPalindrome(s);
-console.log("res", res);
-// console.log('ssssssss',[ 'b', 'a', 'b', 'a' ].splice(0,1) )
+let res = findMedianSortedArrays(nums1, nums2);
+console.log("ss", res);
