@@ -8,35 +8,72 @@
 有点像对对碰消消乐，匹配了就拿掉，直到容器中所有左括号都匹配光，则有效。如果还剩下左括号未匹配，则不有效。
 
  */
-let s = "()[]{}";
-var isValid = function (s) {
-  let map = {
-    "{": "}",
-    "[": "]",
-    "(": ")",
+// let data = "()[]{}";
+// var isValid = function (data) {
+//   let map = {
+//     "{": "}",
+//     "[": "]",
+//     "(": ")",
+//   };
+//   let stack = [];
+//   for (const cur of data) {
+//     if (map[cur]) {
+//       /* 左括号推进去 */
+//       stack.push(cur);
+//     } else {
+//       /* 如果都没有对应的值返回 */
+//       if (stack.length === 0) {
+//         return false;
+//       }
+//       const stackTop = stack[stack.length - 1];
+//       //   栈顶为=>"("=>"["=>"{"
+//       // 然后进行匹配，有就出栈
+//       if (map[stackTop] === cur) {
+//         stack.pop();
+//       } else {
+//         return false;
+//       }
+//     }
+//   }
+//   /* 最后判断是否还有漏网之鱼 */
+//   return stack.length === 0;
+// };
+
+// console.log("ssssssss", isValid(data));
+
+/* 最小栈（包含getMin函数的栈） */
+
+let MinStack = function () {
+  this.items = [];
+  this.min = null;
+  MinStack.prototype.push = function (data) {
+    if (!this.items.length) this.min = data;
+    this.min = Math.min(data, this.min);
+    this.items.push(data);
   };
-  let stack = [];
-  for (const cur of s) {
-    if (map[cur]) {
-      /* 左括号推进去 */
-      stack.push(cur);
-    } else {
-      /* 如果都没有对应的值返回 */
-      if (stack.length === 0) {
-        return false;
-      }
-      const stackTop = stack[stack.length - 1];
-      //   栈顶为=>"("=>"["=>"{"
-      // 然后进行匹配，有就出栈
-      if (map[stackTop] === cur) {
-        stack.pop();
-      } else {
-        return false;
-      }
-    }
-  }
-  /* 最后判断是否还有漏网之鱼 */
-  return stack.length === 0;
+
+  MinStack.prototype.pop = function () {
+    let num = this.items.pop();
+    this.min = Math.min(...this.items);
+    return num;
+  };
+  MinStack.prototype.top = function () {
+    if (!this.items.length) return null;
+    return this.items[this.items.length - 1];
+  };
+  MinStack.prototype.getMin = function () {
+    return this.min;
+  };
 };
 
-console.log("ssssssss", isValid(s));
+let Stack = new MinStack();
+Stack.push(3);
+Stack.push(2);
+Stack.push(10);
+Stack.push(19);
+Stack.push(11);
+Stack.pop();
+Stack.top();
+console.log("ss", Stack);
+console.log("ass", Stack.getMin());
+console.log("ass", Stack.top());
