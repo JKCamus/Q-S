@@ -43,37 +43,59 @@
 
 /* 最小栈（包含getMin函数的栈） */
 
-let MinStack = function () {
-  this.items = [];
-  this.min = null;
-  MinStack.prototype.push = function (data) {
-    if (!this.items.length) this.min = data;
-    this.min = Math.min(data, this.min);
-    this.items.push(data);
-  };
+// let MinStack = function () {
+//   this.items = [];
+//   this.min = null;
+//   MinStack.prototype.push = function (data) {
+//     if (!this.items.length) this.min = data;
+//     this.min = Math.min(data, this.min);
+//     this.items.push(data);
+//   };
 
-  MinStack.prototype.pop = function () {
-    let num = this.items.pop();
-    this.min = Math.min(...this.items);
-    return num;
-  };
-  MinStack.prototype.top = function () {
-    if (!this.items.length) return null;
-    return this.items[this.items.length - 1];
-  };
-  MinStack.prototype.getMin = function () {
-    return this.min;
-  };
+//   MinStack.prototype.pop = function () {
+//     let num = this.items.pop();
+//     this.min = Math.min(...this.items);
+//     return num;
+//   };
+//   MinStack.prototype.top = function () {
+//     if (!this.items.length) return null;
+//     return this.items[this.items.length - 1];
+//   };
+//   MinStack.prototype.getMin = function () {
+//     return this.min;
+//   };
+// };
+
+// let Stack = new MinStack();
+// Stack.push(3);
+// Stack.push(2);
+// Stack.push(10);
+// Stack.push(19);
+// Stack.push(11);
+// Stack.pop();
+// Stack.top();
+// console.log("ss", Stack);
+// console.log("ass", Stack.getMin());
+// console.log("ass", Stack.top());
+
+/* leetCode 1047 */
+/* 也是消消乐的类型，使用栈结构
+ *1、对比栈顶和输入的是否相同，不同入栈
+ *2.原来数组pop可以返回当前删除元素，那么可以利用其构造栈顶元素，
+ *但是不要忘了将其推回去
+ */
+
+var removeDuplicates = function (S) {
+  let stack = [];
+  for (let i of S) {
+    let stackTop = stack.pop();
+    if (stackTop !== i) {
+      // *顺序不能换，先推栈顶
+      stack.push(stackTop);
+      stack.push(i);
+    }
+  }
+  return stack.join("");
 };
-
-let Stack = new MinStack();
-Stack.push(3);
-Stack.push(2);
-Stack.push(10);
-Stack.push(19);
-Stack.push(11);
-Stack.pop();
-Stack.top();
-console.log("ss", Stack);
-console.log("ass", Stack.getMin());
-console.log("ass", Stack.top());
+let s = "abbaca";
+console.log("res", removeDuplicates(s));
