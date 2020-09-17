@@ -85,17 +85,45 @@
  *但是不要忘了将其推回去
  */
 
-var removeDuplicates = function (S) {
-  let stack = [];
-  for (let i of S) {
-    let stackTop = stack.pop();
-    if (stackTop !== i) {
-      // *顺序不能换，先推栈顶
-      stack.push(stackTop);
-      stack.push(i);
+// var removeDuplicates = function (S) {
+//   let stack = [];
+//   for (let i of S) {
+//     let stackTop = stack.pop();
+//     if (stackTop !== i) {
+//       // *顺序不能换，先推栈顶
+//       stack.push(stackTop);
+//       stack.push(i);
+//     }
+//   }
+//   return stack.join("");
+// };
+// let s = "abbaca";
+// console.log("res", removeDuplicates(s));
+
+/* leetCode 237 */
+// var deleteNode = function (node) {
+//   node.val = node.next.val;
+//   node.next = node.next.next;
+// };
+
+/* 盛水最多容器 leetCode  */
+let height = [1,8,6,2,5,4,8,3,7];
+var maxArea = function (height) {
+  let res = 0,
+    i = 0,
+    j = height.length - 1,
+    cur = 0;
+  while (i < j) {
+    let h = height[i] < height[j] ? height[i] : height[j];
+    cur = h * (j - i);
+    res = res > cur ? res : cur;
+    if (height[i] < height[j]) {
+      i++;
+    } else {
+      j--;
     }
   }
-  return stack.join("");
+  return res
 };
-let s = "abbaca";
-console.log("res", removeDuplicates(s));
+
+console.log("===", maxArea(height));
