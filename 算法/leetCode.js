@@ -113,23 +113,46 @@
 一开始前后指针指向第一根柱子和最后一根柱子，计算这两根柱子的面积，此时他们距离是最大的
 由于高度收到最低的限制，所以前后指针中高度最低的往中间移动，知道找到比它高的柱子（因为距离在减少，所以只有高度增大才有机会比之前的大），再重新计算面积，并和前面的比较，取最大值。
 */
-let height = [1,8,6,2,5,4,8,3,7];
-var maxArea = function (height) {
-  let res = 0,
-    i = 0,
-    j = height.length - 1,
-    cur = 0;
-  while (i < j) {
-    let h = height[i] < height[j] ? height[i] : height[j];
-    cur = h * (j - i);
-    res = res > cur ? res : cur;
-    if (height[i] < height[j]) {
-      i++;
-    } else {
-      j--;
-    }
-  }
-  return res
-};
+// let height = [1,8,6,2,5,4,8,3,7];
+// var maxArea = function (height) {
+//   let res = 0,
+//     i = 0,
+//     j = height.length - 1,
+//     cur = 0;
+//   while (i < j) {
+//     let h = height[i] < height[j] ? height[i] : height[j];
+//     cur = h * (j - i);
+//     res = res > cur ? res : cur;
+//     if (height[i] < height[j]) {
+//       i++;
+//     } else {
+//       j--;
+//     }
+//   }
+//   return res
+// };
 
-console.log("===", maxArea(height));
+// console.log("===", maxArea(height));
+
+// leetCode 15
+// let nums = [-1, 0, 1, 2, -1, -4]
+// var threeSum = function(nums) {
+
+// };
+
+/* leetCode 21 */
+var mergeTwoLists = function (l1, l2) {
+  if (l1 === null) {
+    return l2;
+  }
+  if (l2 === null) {
+    return l1;
+  }
+  if (l1.val < l2.val) {
+    l1.next = mergeTwoLists(l1.next, l2);
+    return l1;
+  } else {
+    l2.next = mergeTwoLists(l1, l2.next);
+    return l2;
+  }
+};
