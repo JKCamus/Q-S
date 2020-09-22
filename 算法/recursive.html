@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fibonacci(n) {
+        /* 1、递归结束条件 */
+        if (n <= 2) return 1;
+        /* 2、等价关系式 */
+        return fibonacci(n - 1) + fibonacci(n - 2);
+      }
+      console.log("res", fibonacci(6));
+
+      /* 青蛙跳台阶 */
+
+      function frog(n) {
+        if (n === 1) {
+          return 1;
+        }
+        if (n <= 2) {
+          return n;
+        }
+        return frog(n - 1) + frog(n - 2);
+      }
+      console.log('frog', frog(10))
+    </script>
+  </body>
+</html>
