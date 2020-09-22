@@ -17,16 +17,16 @@
 
       /* 青蛙跳台阶 */
 
-      function frog(n) {
+      function jumpFloor(n) {
         if (n === 1) {
           return 1;
         }
         if (n <= 2) {
           return n;
         }
-        return frog(n - 1) + frog(n - 2);
+        return jumpFloor(n - 1) + jumpFloor(n - 2);
       }
-      console.log('frog', frog(10))
+      console.log('jumpFloor', jumpFloor(5))
     </script>
   </body>
 </html>

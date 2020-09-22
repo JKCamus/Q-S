@@ -140,19 +140,52 @@
 
 // };
 
-/* leetCode 21 */
-var mergeTwoLists = function (l1, l2) {
-  if (l1 === null) {
-    return l2;
+// /* leetCode 21 */
+// var mergeTwoLists = function (l1, l2) {
+//   if (l1 === null) {
+//     return l2;
+//   }
+//   if (l2 === null) {
+//     return l1;
+//   }
+//   if (l1.val < l2.val) {
+//     l1.next = mergeTwoLists(l1.next, l2);
+//     return l1;
+//   } else {
+//     l2.next = mergeTwoLists(l1, l2.next);
+//     return l2;
+//   }
+// };
+
+/* LeetCode15 */
+let nums = [-1, 0, 1, 2, -1, -4]
+var threeSum = function (nums) {
+  const result = [];
+  nums.sort((a, b) => a - b);
+  // console.log('n', nums)
+  for (let i = 0; i < nums.length - 2; i++) {
+    if (i === 0 || nums[i] !== nums[i - 1]) {
+      let start = i + 1,
+        end = nums.length - 1;
+      while (start < end) {
+        if (nums[i] + nums[start] + nums[end] === 0) {
+          result.push([nums[i], nums[start], nums[end]]);
+          start++;
+          end--;
+          while (start < end && nums[start] === nums[start - 1]) {
+            start++;
+          }
+          while (start < end && nums[end] === nums[end + 1]) {
+            end--;
+          }
+        } else if (nums[i] + nums[start] + nums[end] < 0) {
+          start++;
+        } else {
+          end--;
+        }
+      }
+    }
   }
-  if (l2 === null) {
-    return l1;
-  }
-  if (l1.val < l2.val) {
-    l1.next = mergeTwoLists(l1.next, l2);
-    return l1;
-  } else {
-    l2.next = mergeTwoLists(l1, l2.next);
-    return l2;
-  }
+  return result;
 };
+console.log('res',threeSum(nums) )
