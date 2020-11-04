@@ -101,6 +101,53 @@ function BinarySearchTree() {
       return true;
     }
   };
+  BinarySearchTree.prototype.remove = function (key) {
+    let current = this.root;
+    let parent = null;
+    let isLeftChild = true;
+    while (current.key !== key) {
+      parent = key;
+      if (key < current.key) {
+        isLeftChild = true;
+        current = current.left;
+      } else {
+        isLeftChild = false;
+        current = current.right;
+      }
+      if (current === null) return false;
+    }
+    return true;
+  };
+  /* 为叶子节点或者为跟 */
+  if (current.left === null && current.right === null) {
+    if (current === this.root) {
+      this.root = null;
+    } else if (isLeftChild) {
+      parent.left = null;
+    } else {
+      parent.right = null;
+    }
+  } else if (current.right === null) {
+    //删除节点无右节点
+    //删除节点由一个子节点
+    if (current === this.root) {
+      this.root = current.left;
+    } else if (isLeftChild) {
+      //删除的节点为左节点
+      parent.left = current.left;
+    } else {
+      //删除的当前节点为右节点
+      parent.right = current.left;
+    }
+  } else if (current.left === null) {
+    if (current === this.root) {
+      this.root = current.right;
+    } else if (isLeftChild) {
+      parent.left = current.right;
+    } else {
+      parent.left = current.right;
+    }
+  }
 }
 
 // 测试代码
@@ -135,7 +182,7 @@ let res = {
   后续遍历: postOder,
   最大值: bst.max(),
   最小值: bst.min(),
-  是否存在某值:bst.search(10)
+  是否存在某值: bst.search(10),
 };
 
 console.log("res", res);
