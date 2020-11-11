@@ -106,7 +106,7 @@ function BinarySearchTree() {
     let parent = null;
     let isLeftChild = true;
     while (current.key !== key) {
-      parent = key;
+      parent = current;
       if (key < current.key) {
         isLeftChild = true;
         current = current.left;
@@ -116,38 +116,75 @@ function BinarySearchTree() {
       }
       if (current === null) return false;
     }
+    /* 为叶子节点或者为跟 */
+    if (current.left === null && current.right === null) {
+      if (current === this.root) {
+        this.root = null;
+      } else if (isLeftChild) {
+        parent.left = null;
+      } else {
+        parent.right = null;
+      }
+    } else if (current.right === null) {
+      //删除节点无右节点
+      //删除节点由一个子节点
+      if (current === this.root) {
+        this.root = current.left;
+      } else if (isLeftChild) {
+        //删除的节点为左节点
+        parent.left = current.left;
+      } else {
+        //删除的当前节点为右节点
+        parent.right = current.left;
+      }
+    } else if (current.left === null) {
+      if (current === this.root) {
+        this.root = current.right;
+      } else if (isLeftChild) {
+        parent.left = current.right;
+      } else {
+        parent.left = current.right;
+      }
+    } else {
+      // 1.获取后继节点
+      let successor = this.getSuccessor(current);
+      // 2.判断是否是根节点
+      if (current == this.root) {
+        this.root = successor;
+      } else if (isLeftChild) {
+        parent.left = successor;
+      } else {
+        parent.right = successor;
+      }
+      successor.left = current.left;
+    }
     return true;
   };
-  /* 为叶子节点或者为跟 */
-  if (current.left === null && current.right === null) {
-    if (current === this.root) {
-      this.root = null;
-    } else if (isLeftChild) {
-      parent.left = null;
-    } else {
-      parent.right = null;
+
+  /* 删除的节点有两个子节点，甚至子节点还有子节点，
+则需要从下面的子节点中找到 一个节点替换当前的节点*/
+  /* 前驱节点：比current小一点点的节点, 一定是current左子树的最大值，称为current节点的前驱
+，后继节点 ：比current大一点点的节点, 一定是current右子树的最小值 称为current节点的后继.
+*/
+  // 后继
+  BinarySearchTree.prototype.getSuccessor = function (delNode) {
+    // 1.使用变量保存临时的节点
+    let successorParent = delNode;
+    let successor = delNode;
+    let current = delNode.right; //从右子树开始找
+    // 2.寻找节点
+    while (current != null) {
+      successorParent = successor;
+      successor = current;
+      current = current.left;
     }
-  } else if (current.right === null) {
-    //删除节点无右节点
-    //删除节点由一个子节点
-    if (current === this.root) {
-      this.root = current.left;
-    } else if (isLeftChild) {
-      //删除的节点为左节点
-      parent.left = current.left;
-    } else {
-      //删除的当前节点为右节点
-      parent.right = current.left;
+    // 3.如果删了图中15的情况，还需要如下
+    if (successor != delNode.right) {
+      successorParent.left = success.right;
+      successor.right = delNode.right;
     }
-  } else if (current.left === null) {
-    if (current === this.root) {
-      this.root = current.right;
-    } else if (isLeftChild) {
-      parent.left = current.right;
-    } else {
-      parent.left = current.right;
-    }
-  }
+    return successor;
+  };
 }
 
 // 测试代码
