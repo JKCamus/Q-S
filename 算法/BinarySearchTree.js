@@ -79,6 +79,12 @@ function BinarySearchTree() {
     }
     return node.key;
   };
+  /**
+   * @description: 树中最大值
+   * @param {*}
+   * @return {*}
+   * @author: camus
+   */
   BinarySearchTree.prototype.max = function () {
     let node = this.root;
     while (node.right !== null) {
