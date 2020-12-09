@@ -4,7 +4,7 @@
  * @Author: camus
  * @Date: 2020-12-04 17:38:43
  * @LastEditors: camus
- * @LastEditTime: 2020-12-07 09:59:37
+ * @LastEditTime: 2020-12-07 15:48:52
  */
 let needSort = [
   {
@@ -48,3 +48,5 @@ let newArray = needSort.sort(sortFunc);
 
 console.log("res", newArray);
 
+let a=[]
+console.log('sss', a[0])
