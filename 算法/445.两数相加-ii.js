@@ -29,11 +29,35 @@ var addTwoNumbers = function (l1, l2) {
     stack2.push(l2.val);
     l2 = l2.next;
   }
-  let carry=0,curr=null
-  while (stack1.length||stack2.length) {
+  let carry = 0,
+    curr = null;
+  // 只要其中一个栈还有值就继续
+  while (stack1.length !== 0 || stack2.length !== 0) {
+    let sum = 0;
+    if (stack1.length !== 0) {
+      sum += stack1.pop();
+      // 等于 const num=stack1.pop()
+      // sum=sum+num
+    }
+    if (stack2.length !== 0) {
+      sum += stack2.pop();
+    }
 
+    // 加上进位
+    sum += carry;
+    // 得到个位数
+    const node = new ListNode(sum % 10);
+    // 处理进位
+    carry = Math.floor(sum / 10);
+    node.next = curr;
+    curr = node;
   }
+  if (carry !== 0) {
+    const node = new ListNode(carry);
+    node.next = curr;
+    curr = node;
+  }
+  return curr;
 };
-
 
 // @lc code=end
