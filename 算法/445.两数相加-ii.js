@@ -49,9 +49,11 @@ var addTwoNumbers = function (l1, l2) {
     const node = new ListNode(sum % 10);
     // 处理进位
     carry = Math.floor(sum / 10);
+    // 注意顺序
     node.next = curr;
     curr = node;
   }
+  // 最后处理进位
   if (carry !== 0) {
     const node = new ListNode(carry);
     node.next = curr;
