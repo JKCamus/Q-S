@@ -38,6 +38,10 @@ function BinarySearchTree() {
       }
     }
   };
+  /**
+   * @description: 前序
+   * @param {*} handler
+   */
   BinarySearchTree.prototype.preOderTraversal = function (handler) {
     this.preOderTraversalNode(this.root, handler);
   };
@@ -48,6 +52,10 @@ function BinarySearchTree() {
       this.preOderTraversalNode(node.right, handler);
     }
   };
+  /**
+   * @description: 中序
+   * @param {*} handler
+   */
   BinarySearchTree.prototype.insertOderTraversal = function (handler) {
     this.insertOderTraversalNode(this.root, handler);
   };
@@ -61,7 +69,10 @@ function BinarySearchTree() {
       this.insertOderTraversalNode(node.right, handler);
     }
   };
-
+  /**
+   * @description: 后序
+   * @param {*} handler
+   */
   BinarySearchTree.prototype.postOderTraversal = function (handler) {
     this.postOderTraversalNode(this.root, handler);
   };
