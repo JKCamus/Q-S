@@ -4,7 +4,11 @@
  * @Author: camus
  * @Date: 2021-02-18 10:14:29
  * @LastEditors: camus
- * @LastEditTime: 2021-02-18 10:43:09
+ * @LastEditTime: 2021-02-18 10:46:09
+ */
+/**
+ * @description: 组合继承
+ * 父类构造函数里面的代码会执行2遍,第一遍是在原型继承的时候实例化父类, 第二遍是在子类的构造函数里面借用父类的构造函数,
  */
 // 父类
 function Father(name) {
