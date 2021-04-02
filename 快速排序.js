@@ -15,7 +15,8 @@ function quickSortRecursion(arr) {
   const pivot = arr.pop();
   let left = arr.filter(item => item < pivot);
   let right = arr.filter(item => item >= pivot);
-  return quickSortRecursion(left).concat([pivot], quickSortRecursion(right));
+  // return quickSortRecursion(left).concat([pivot], quickSortRecursion(right));
+  return [...quickSortRecursion(left),pivot,...quickSortRecursion(right)]
 }
 let arr = [1, 2, 3, 4, -100, 0]
 quickSortRecursion(arr)
