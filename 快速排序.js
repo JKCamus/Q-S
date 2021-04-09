@@ -13,13 +13,12 @@
 function quickSortRecursion(arr) {
   if (!arr || arr.length < 2) return arr;
   const pivot = arr.pop();
-  let left = arr.filter(item => item < pivot);
-  let right = arr.filter(item => item >= pivot);
-  // return quickSortRecursion(left).concat([pivot], quickSortRecursion(right));
-  return [...quickSortRecursion(left),pivot,...quickSortRecursion(right)]
+  let left = arr.filter((item) => item < pivot);
+  let right = arr.filter((item) => item >= pivot);
+  return [...quickSortRecursion(left), pivot, ...quickSortRecursion(right)];
 }
-let arr = [1, 2, 3, 4, -100, 0]
-quickSortRecursion(arr)
+let arr = [1, 2, 3, 4, -100, 0];
+quickSortRecursion(arr);
 
 console.log(arr);
 //消耗空间太大，快排应该是原地排序，不应该每次迭代都生成两个新数组
