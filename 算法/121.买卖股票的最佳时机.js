@@ -13,18 +13,16 @@
  */
 
 var maxProfit = function (prices) {
+  if (prices.length === 0) {
+    return 0;
+  }
   let minPrice = prices[0],
     maxProfit = 0;
-  if (prices.length === 0) return 0;
-  for (let i = 0; i < prices.length; i++) {
-    // 左侧最低值
-    if (minPrice > prices[i]) {
-      minPrice = prices[i];
-    } else {
-      // 有更好的利润肯定出现在右侧
-      if (prices[i] - minPrice > maxProfit) {
-        maxProfit = prices[i] - minPrice;
-      }
+  for (let item of prices) {
+    if (item < minPrice) {
+      minPrice = item;
+    } else if (item - minPrice > maxProfit) {
+      maxProfit = item - minPrice;
     }
   }
   return maxProfit;
