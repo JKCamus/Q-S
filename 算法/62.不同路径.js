@@ -11,13 +11,14 @@
  * @return {number}
  */
 var uniquePaths = function (m, n) {
-
-  const memo = [];
-  // 新建二维数组，为m行二维数组
-  // 如array= [[0 , 1 , 2 ],[1 , 2 , 3, ]]为两行3列二维数组
-  for (let i = 0; i < m; i++) {
-    memo.push([]);
-  }
+  // const memo = [];
+  // // 新建二维数组，为m行二维数组
+  // // 如array= [[0 , 1 , 2 ],[1 , 2 , 3, ]]为两行3列二维数组
+  // for (let i = 0; i < m; i++) {
+  //   memo.push([]);
+  // }
+  // 生成二维数组的方式，m为行，n为列
+  const memo = Array.from({ length: m }, (v) => Array());
   // 遍历行，填充第一行为0
   for (let row = 0; row < m; row++) {
     memo[row][0] = 1;
@@ -33,6 +34,6 @@ var uniquePaths = function (m, n) {
     }
   }
   // 返回
-  return memo[m - 1][n- 1];
+  return memo[m - 1][n - 1];
 };
 // @lc code=end
