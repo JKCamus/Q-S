@@ -11,16 +11,28 @@
  */
 var climbStairs = function (n) {
   //创建记忆化数组
-  const memo = [];
-  memo[1] = 1;
-  memo[2] = 2;
-  for (let i = 3; i <=n; i++) {
-    // 动态规划常用套路
-    memo[i] = memo[i - 2] + memo[i - 1];
-    // console.log('memo', memo[i])
+  // if (n < 2) {
+  //   return n;
+  // }
+  // const memo = [1, 2];
+  // for (let i = 2; i <= n; i++) {
+  //   memo[i] = memo[i - 1] + memo[i - 2];
+  // }
+  // return memo[n - 1];
+  if (n <= 2) {
+    return n;
   }
-  return memo[n];
-// 递归回调 策略更优
+  let pre1 = 1,
+    pre2 = 2,
+    total = pre2;
+  for (let i = 3; i <= n; i++) {
+    total = pre1 + pre2;
+    pre1 = pre2;
+    pre2 = total;
+  }
+  return total;
+
+  // 递归回调 策略更优
   // const memo = [];
   // memo[1] = 1;
   // memo[2] = 2;
