@@ -4,7 +4,7 @@
  * @Author: camus
  * @Date: 2021-02-13 23:09:49
  * @LastEditors: camus
- * @LastEditTime: 2021-02-13 23:31:43
+ * @LastEditTime: 2021-04-21 14:59:12
  */
 // new 生成对象的过程
 // 1、生成新对象
@@ -37,13 +37,25 @@
  * @param {*} Con
  * @param {array} args
  */
-function create(Con, ...args) {
-  // 1. 创造空对象
-  const obj = {};
-  Object.setPrototypeOf(obj, Con.prototype);
-  // 綁定this并执行构造函数(链接对象的原型)
-  let result = Con.apply(obj, args);
-  return result instanceof Object ? result : obj;
+// function create(Con, ...args) {
+//   // 1. 创造空对象
+//   const obj = {};
+//   Object.setPrototypeOf(obj, Con.prototype);
+//   // 綁定this并执行构造函数(链接对象的原型)
+//   let result = Con.apply(obj, args);
+//   return result instanceof Object ? result : obj;
+// }
+function create(func, ...args) {
+  // 创建对象
+  let obj = Object.create(func.prototype);
+  // 改变this指向，把结果给k
+  let k = func.call(obj, ...args);
+  // 返回值如果是对象，将该对象返回，如果不是返回空对象
+  if (k && typeof k === "object") {
+    return k;
+  } else {
+    return obj;
+  }
 }
 
 function Test(name, age) {
@@ -55,7 +67,7 @@ Test.prototype.askName = function () {
   console.log("name is", this.name);
 };
 const val = create(Test, "camus", 28);
-const test=new Test("camus", 28)
+const test = new Test("camus", 28);
 console.log("val.name", val.name);
 console.log("val.age", val.age);
 val.askName();
