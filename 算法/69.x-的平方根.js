@@ -14,9 +14,13 @@ var mySqrt = function (x) {
     return x;
   }
   let left = 1,
+    // mid需要定义在外
     mid,
+    // 二分搜索右边界，可以缩短为一半。
     right = Math.floor(x / 2);
+  // 终止循环边界，需要等于
   while (left <= right) {
+    // mid多数需要Math.floor
     mid = Math.floor(left + (right - left) / 2);
     if (mid * mid === x) {
       return mid;
