@@ -18,14 +18,15 @@
  * @return {boolean}
  */
 var hasCycle = function (head) {
-  if (head === null) return false;
-
+  if (head === null) {
+    return false;
+  }
   let slow = head,
     fast = head;
   // 快指针走两步，判断下一步和下两步不为空
   while (fast.next !== null && fast.next.next !== null) {
-    slow = slow.next;
     fast = fast.next.next;
+    slow = slow.next;
     if (fast === slow) {
       return true;
     }
