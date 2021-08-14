@@ -10,7 +10,7 @@
  * @return {number}
  */
 var maxAreaOfIsland = function (grid) {
-  let result = [];
+  let result = 0;
   for (let row = 0; row < grid.length; row++) {
     for (let col = 0; col < grid[0].length; col++) {
       if (grid[row][col] === 1) {
@@ -20,6 +20,7 @@ var maxAreaOfIsland = function (grid) {
       }
     }
   }
+  // test
   function dfs(row, col) {
     // 边界考虑，是大于等于
     if (
