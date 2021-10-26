@@ -63,3 +63,35 @@ document.getElementById("loginBtn").onclick = function () {
   let loginLayer = createLoginLayer();
   loginLayer.style.display = "block";
 };
+//
+let getSingle = function (fn) {
+  let result: null;
+  return function () {
+    return result || (result = fn.apply(this, arguments));
+  };
+};
+// 创建登录浮窗
+let createLoginLayerSec = function () {
+  let div = document.createElement("div");
+  div.innerHTML = "我是登录浮窗";
+  div.style.display = "none";
+  document.body.appendChild(div);
+  return div;
+};
+// 惰性函数包裹
+let createSingleLoginLayer = getSingle(createLoginLayer);
+document.getElementById("loginBtn").onclick = function () {
+  let loginLayer = createSingleLoginLayer();
+  loginLayer.style.display = "block";
+};
+// 直接传入回调函数创建 iframe
+let createSingleIframe = getSingle(function () {
+  let iframe = document.createElement("iframe");
+  document.body.appendChild(iframe);
+  return iframe;
+});
+
+document.getElementById("loginBtn").onclick = function () {
+  let loginLayer = createSingleIframe();
+  loginLayer.scr = "http://baidu.com";
+};
