@@ -36,13 +36,9 @@ console.log(reverseString2); */
 let str = '9876673';
 
 let info = str.split('').reverse().reduce((p, k) => (p[k]++ || (p[k] = 1), p), {});
-//? array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
-console.log(Array.isArray([1, 1, 2]));
-console.log(info); //{ a: 3, b: 2, c: 2, d: 1 }
-console.log(Object.keys(info)); //[ 'a', 'b', 'c', 'd' ]
 
-console.log(Object.values(info)); //[ 3, 2, 2, 1 ]
-console.log(Number(Object.keys(info).join('')));
+console.log('res=>', info)
+//? array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 
 /* 
 
