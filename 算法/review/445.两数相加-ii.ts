@@ -35,11 +35,11 @@ function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | nul
 
   while (stack1.length !== 0 || stack2.length !== 0) {
     let sum = 0
-    while (stack1.length) {
+    if (stack1.length) {
       sum += stack1.pop()
     }
 
-    while (stack2.length) {
+    if (stack2.length) {
       sum += stack2.pop()
     }
 
@@ -47,11 +47,13 @@ function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | nul
     const node = new ListNode(sum % 10)
     node.next = curr
     carry = Math.floor(sum / 10)
+    curr=node
   }
 
   if (carry > 0) {
     const node = new ListNode(carry)
     node.next = curr
+    curr=node
   }
   return curr
 };
