@@ -13,7 +13,7 @@
  *
  */
 // @lc code=start
-function findRepeatedDnaSequences(s: string): string[] {
+function findRepeatedDnaSequences(s: string)  : string[] {
   const mapping = new Map()
 
   const result = []
