@@ -18,8 +18,6 @@ function maxProduct(nums: number[]): number {
     max = Math.max(maxProductMemo[i],max)
   }
   return max
-
-
 };
 // @lc code=end
 
