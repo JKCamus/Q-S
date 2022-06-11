@@ -20,7 +20,6 @@
  */
 
 function isSymmetric(root: TreeNode | null): boolean {
-
   const help = (L:TreeNode | null, R:TreeNode | null) => {
     if (L === null && R === null) {
       return true
@@ -35,8 +34,6 @@ function isSymmetric(root: TreeNode | null): boolean {
   } else {
     return help(root.left, root.right)
   }
-
-
 };
 // @lc code=end
 
