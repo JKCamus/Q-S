@@ -1,12 +1,23 @@
-function create() {
-  // 1. 获取构造函数，并且删除 arguments 中的第一项
-  const Fn = [].shift.call(arguments);
-  // 2. 创建一个空的对象并链接到构造函数的原型，使它能访问原型中的属性
-  const obj = Object.create(Fn.prototype);
-  // 3. 使用apply改变构造函数中this的指向实现继承，使obj能访问到构造函数中的属性
-  const ret = Fn.apply(obj, arguments);
-  // 4. 优先返回构造函数返回的对象
-  return ret instanceof Object ? ret : obj;
+function call(con) {
+  if (typeof this !== "function") {
+    throw TypeError("need function");
+  }
+  // 1. 若是传入的context是null或者undefined时指向window;
+  // 2. 若是传入的是原始数据类型, 原生的call会调用 Object() 转换
+  const context = con !== null && con !== undefined ? Object(con) : window;
+  // 3. 创建一个独一无二的fn函数的命名,避免覆盖上下文中的同名fn函数
+  const fn = Symbol();
+  // 4. 这里的this就是指调用call的那个函数
+  // 5. 将调用的这个函数赋值到context中,
+  // 这样之后执行context.fn的时候, fn里的this就是指向context了
+  context[fn] = this;
+  // 第0项参数是context，所以传参是从第一项开始的
+  const args = [...arguments].slice(1);
+  const result = context[fn](...args);
+  // 第0项参数是context，所以传参是从第一项开始的
+  delete context[fn];
+  // result可能有返回值
+  return result;
 }
 // 构造函数中有返回值且为对象，那么创建的实例就只能访问到返回对象中的属性
 // 构造函数中没有返回值，那么创建的实例就能访问到这个构造函数中的所有属性了。
@@ -45,3 +56,14 @@ Function.prototype.bind = function (con) {
     return fn.apply(this instanceof Fn ? context : args.concat(...arguments));
   };
 };
+var obj = {
+  name: "objName",
+};
+var name = "globalName";
+
+function consoleInfo(sex, weight) {
+  console.log(this, sex, weight);
+}
+consoleInfo("man", 100); // globalName man 100
+consoleInfo.call(obj, "man", 100); // 'objName' 'man' 100
+consoleInfo.call(obj, "woman", 120); // 'objName' 'woman' 120
