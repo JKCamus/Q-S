@@ -16,6 +16,7 @@ function canJump(nums: number[]): boolean {
       maxJump = i
     }
   }
+
   const canJump = maxJump === 0
   return canJump
   // !bottom up

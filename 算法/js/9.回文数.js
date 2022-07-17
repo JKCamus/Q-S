@@ -21,8 +21,14 @@ var isPalindrome = function (x) {
     res = 0;
   while (sum !== 0) {
     res = res * 10 + (sum % 10);
+
     sum = Math.floor(sum / 10);
+  console.log('res=>res', res)
+  console.log('res=>sum', sum)
+
   }
   return res === x;
 };
+
+console.log('res=>', isPalindrome(121))
 // @lc code=end

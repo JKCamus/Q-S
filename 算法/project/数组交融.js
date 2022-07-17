@@ -30,4 +30,6 @@ const az = [1, 2, 3];
 
 const obj = { ...az };
 
-console.log("res=>", obj);
+console.log("res=>", eval([1,2,3])+1);
+
+

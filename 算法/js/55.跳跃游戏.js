@@ -27,3 +27,4 @@ var canJump = function (nums) {
   return maxJump === 0;
 };
 // @lc code=end
+console.log(canJump([1]));
