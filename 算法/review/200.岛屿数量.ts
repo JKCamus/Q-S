@@ -17,12 +17,11 @@
 // @lc code=start
 function numIslands(grid: string[][]): number {
 
-
   const dfs = (row: number, col: number)=>{
     if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || grid[row][col] === '0') {
       return
     }
-
+    // 记住需要沉没
     grid[row][col]='0'
     dfs(row + 1, col)
     dfs(row - 1, col)
