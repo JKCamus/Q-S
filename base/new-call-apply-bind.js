@@ -67,3 +67,27 @@ function consoleInfo(sex, weight) {
 consoleInfo("man", 100); // globalName man 100
 consoleInfo.call(obj, "man", 100); // 'objName' 'man' 100
 consoleInfo.call(obj, "woman", 120); // 'objName' 'woman' 120
+
+
+Function.prototype.myApply = function(con) {
+  // 判断调用对象是否为函数
+  if (typeof this !== "function") {
+    throw new TypeError("Error");
+  }
+  const context = con === null || con === undefined ? window : Object(con);
+  let result = null;
+
+  // 判断 context 是否存在，如果未传入则为 window
+  context = context || window;
+  // 将函数设为对象的方法
+  context.fn = this;
+  // 调用方法
+  if (arguments[1]) {
+    result = context.fn(...arguments[1]);
+  } else {
+    result = context.fn();
+  }
+  // 将属性删除
+  delete context.fn;
+  return result;
+};
