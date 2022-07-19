@@ -51,7 +51,7 @@ function addTwoNumbers(
     curr.next = new ListNode(carry)
   }
 
-  return dummy
+  return dummy.next
 
 
 }
