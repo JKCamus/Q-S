@@ -12,7 +12,7 @@ function isPalindrome(x: number): boolean {
     res = res * 10 + (sum % 10)
     sum = Math.floor(sum / 10)
   }
-  return x == res
+  return x ===res
 };
 // @lc code=end
 
