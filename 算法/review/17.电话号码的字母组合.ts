@@ -7,7 +7,7 @@
 // @lc code=start
 function letterCombinations(digits: string): string[] {
   if (digits.length == 0) return [];
-  const res = [];
+  const res:string[] = [];
   const map = {//建立电话号码和字母的映射关系
     2: "abc",
     3: "def",
@@ -18,7 +18,7 @@ function letterCombinations(digits: string): string[] {
     8: "tuv",
     9: "wxyz",
   };
-  const dfs = (currStr, l) => {
+  const dfs = (currStr:string, l) => {
     if (l > digits.length - 1) {
       res.push(currStr)
       return
@@ -31,5 +31,6 @@ function letterCombinations(digits: string): string[] {
   dfs('', 0)
   return res
 };
+
 // @lc code=end
 
