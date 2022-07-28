@@ -3,8 +3,8 @@
  * @version:
  * @Author: camus
  * @Date: 2021-03-03 13:53:14
- * @LastEditors: camus
- * @LastEditTime: 2021-04-26 19:55:39
+ * @LastEditors: Camus 9248507578@qq.com
+ * @LastEditTime: 2022-07-27 21:04:33
  */
 /**
  * @description: 考虑正负，考虑小数
@@ -29,12 +29,12 @@ function numFormat(nums) {
   if (integerStr) {
     result = integerStr + result;
   }
-  result = numArr[1] ? result + `.${numArr[1]}` : "";
+  result = numArr[1] ? result + `.${numArr[1]}` : result;
   result = flag + result;
   return result;
 }
 
-console.log("res=>", numFormat(-1123456789.25585555555));
+console.log("res=>", numFormat(-1123456789));
 
 // /**
 //  * @description: 会截取小数点后三位，四舍五入
