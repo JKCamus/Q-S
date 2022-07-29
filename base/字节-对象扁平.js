@@ -1,12 +1,14 @@
-// {
-//   a: {
-//       b: 'hello ',
-//       c {
-//           d: 'world'
-//       }
-//   },
-//   e: 'hello world'
-// }
+const val = {
+  a: {
+    b: "hello ",
+    c: {
+      d: {
+        e: null,
+      },
+    },
+  },
+  e: "hello world",
+};
 
 // 转换为
 // {
@@ -17,19 +19,18 @@
 
 function flatObj(obj) {
   const res = {};
-  function keyToStr(keyStr, value, valueStr) {
+  function keyToStr(keyStr, value) {
     if (typeof value !== "object" || value === null) {
       res[keyStr.slice(1)] = valueStr;
       return;
     }
     Object.keys(value).forEach((ele) => {
-      if (typeof value[ele] === "string") {
-        valueStr = valueStr + value[ele];
-      }
-      console.log(ele, valueStr);
-      keyToStr(keyStr + "." + ele, value[ele], valueStr);
+      valueStr = value[ele];
+      // 递归
+      keyToStr(keyStr + "." + ele, value[ele]);
     });
   }
-  keyToStr("", obj, "");
+  keyToStr("", obj)
   return res;
 }
+console.log("result", flatObj(val));

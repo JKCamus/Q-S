@@ -24,6 +24,7 @@ function levelOrder(root: TreeNode | null): number[][] {
   const queue = [root]
   const result = []
   while (queue.length) {
+    // 构建一层
     const arr = []
     let len = queue.length
     while (len) {

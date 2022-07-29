@@ -12,7 +12,7 @@ const bubbleSort = (list, func) => {
 let array = [1, 2, 3, -1, 6, 8, 9, 0, -112];
 bubbleSort(array, (a, b) => b - a); //升序
 
-console.log(array);
+// console.log(array);
 
 const exBubble = (arr, func) => {
   let len = arr.length
@@ -25,4 +25,13 @@ const exBubble = (arr, func) => {
   }
 };
 
-df "d"
+const quickSort=(arr)=>{
+  if(!arr||arr.length<2)return arr
+  const pivot=arr.pop()
+  const left=arr.filter(item=>item<pivot)
+  const right=arr.filter(item=>item>=pivot)
+  return [...quickSort(left),pivot,...quickSort(right)]
+}
+let array1 = [1, 2, 3, -1, 6, 8, 9, 0,0,1, -112];
+
+console.log('arr',quickSort(array1));
