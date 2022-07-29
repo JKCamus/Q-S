@@ -18,19 +18,19 @@
  */
 
 function swapPairs(head: ListNode | null): ListNode | null {
-  let dummy = new ListNode()
-  dummy.next = head
-  let curr = dummy
-  while (curr.next !== null || curr.next.next !== null) {
+  let dummy = new ListNode();
+  dummy.next = head;
+  let curr = dummy;
+  while (curr.next !== null && curr.next.next !== null) {
     let l1 = curr.next;
     let l2 = curr.next.next;
-    curr.next = l2
-    l1.next = l2.next
-    l2.next = l1
-    curr = l1
+    // 先变更curr.next
+    curr.next = l2;
+    l1.next = l2.next;
+    l2.next = l1;
+    // 移位
+    curr = l1;
   }
-  return dummy.next
-
-};
+  return dummy.next;
+}
 // @lc code=end
-
