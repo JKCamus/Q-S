@@ -34,3 +34,23 @@ function flatObj(obj) {
   return res;
 }
 console.log("result", flatObj(val));
+
+
+const transform = (obj) => {
+  const result = {};
+  const changeKeys = (keys, val) => {
+    if (typeof val !== "object"||val===null) {
+      result[keys.slice(1)] = val;
+      return
+    }
+    Object.keys(val).forEach((el) => {
+      changeKeys(keys + "." + el, val[el]);
+    });
+
+  };
+  changeKeys("", obj);
+
+  return result;
+};
+
+console.log("res=>", transform(val));

@@ -37,3 +37,4 @@ function getPaths(list) {
 }
 
 console.log('res=>', getPaths(list))
+
