@@ -6,17 +6,17 @@
 
 // @lc code=start
 function removeDuplicates(nums: number[]): number {
-  let i = 0,
-    j = 0;
-  const len = nums.length;
+  let i = 0, j = 0;
+  const len = nums.length
   while (j < len) {
-    while (j < len && nums[i] === nums[j]) j++;
-    i++;
-    nums[i] = nums[j];
-    j++;
+      while (j < len && nums[i] === nums[j]) j++
+      if (j < len && nums[i] !== nums[j]) {
+          i++
+          nums[i] = nums[j]
+      }
+      j++
   }
-  return i + 1;
-}
-
+  return i + 1
+};
 // @lc code=end
 
