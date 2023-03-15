@@ -48,11 +48,9 @@ class SuperTask {
   // promiseCreator 是一个异步函数，return Promise
   add(promiseCreator) {
     return new Promise((resolve, reject) => {
-      this.id += 1;
       const task = {
         promiseCreator,
         resolve,
-        id: this.id,
       };
       if (this.counter < this.limit) {
         this.run(task);
