@@ -37,17 +37,6 @@ console.log("flatten=>", flatten(arr));
 
 // reduce + 递归   原型上实现，并且复刻flat的跳过空位
 Array.prototype.fakeFlat = function (num = 1) {
-  // if (!Number(num) || Number(num) < 0) {
-  //   return this;
-  // }
-  // let arr = [].concat(this);
-  // return num > 0
-  //   ? arr.reduce(
-  //       (pre, cur) =>
-  //         pre.concat(Array.isArray(cur) ? cur.fakeFlat(--num) : cur),
-  //       []
-  //     )
-  //   : arr.slice();
   if (!Number(num) || Number(num) < 0) {
     return this;
   }

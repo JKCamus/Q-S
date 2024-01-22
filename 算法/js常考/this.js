@@ -3,8 +3,8 @@
  * @version:
  * @Author: camus
  * @Date: 2021-03-17 21:34:59
- * @LastEditors: camus
- * @LastEditTime: 2021-03-17 22:03:59
+ * @LastEditors: Camus 924850758@qq.com
+ * @LastEditTime: 2022-08-23 13:44:03
  */
 // 习题一
 // let obj = {
@@ -35,9 +35,8 @@ var print = obj.print;
 print();
 // 去掉use strict后
 // 2
-// undefined
+// 隐式绑定丢失
 // 1
-// undefined
 function F() {
   this. a = 1;
   }

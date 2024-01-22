@@ -1,10 +1,8 @@
 const sleep = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
 };
-
 // Promise 解
 sleep(1000).then(() => console.log("res=>一秒"));
-
 // async await
 async function output(time) {
   const start = +new Date();
@@ -14,7 +12,6 @@ async function output(time) {
   return;
 }
 output(1000);
-
 //Generator
 function* sleepGenerator(time) {
   yield new Promise(function (resolve, reject) {
